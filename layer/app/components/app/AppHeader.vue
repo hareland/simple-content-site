@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { useSiteI18n } from '../../composables/useSiteI18n'
+import { useSiteHeader } from '#imports'
+
+const { data: header } = await useSiteHeader()
 
 const appConfig = useAppConfig()
 const site = useSiteConfig()
@@ -22,14 +25,13 @@ const links = computed(() => appConfig.github && appConfig.github.url
   <UHeader
     :ui="{ center: 'flex-1' }"
     :to="localePath('/')"
-    :title="appConfig.header?.title || site.name"
+    :title="header?.title || appConfig.header?.title || site.name"
   >
-    <AppHeaderCenter />
-
     <template #title>
       <AppHeaderLogo class="h-6 w-auto shrink-0" />
     </template>
 
+    <AppHeaderCenter />
     <template #right>
       <AppHeaderCTA />
 
@@ -57,14 +59,6 @@ const links = computed(() => appConfig.github && appConfig.github.url
           <div class="h-8 w-8 animate-pulse bg-neutral-200 dark:bg-neutral-800 rounded-md" />
         </template>
       </ClientOnly>
-
-      <template v-if="links?.length">
-        <UButton
-          v-for="(link, index) of links"
-          :key="index"
-          v-bind="{ color: 'neutral', variant: 'ghost', ...link }"
-        />
-      </template>
     </template>
 
     <template #toggle="{ open, toggle }">

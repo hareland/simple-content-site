@@ -1,5 +1,6 @@
 import type { DefinedCollection } from '@nuxt/content'
 import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+import { NavigationMenuItem } from '@nuxt/ui'
 import { useNuxt } from '@nuxt/kit'
 import { joinURL } from 'ufo'
 
@@ -34,6 +35,23 @@ const createLinkSchema = () => z.object({
   variant: variantEnum.optional(),
 })
 
+const createNavigationSchema = () => z.object({
+  label: z.string().nonempty(),
+  class: z.string().optional(),
+  to: z.string().nonempty(),
+  icon: z.string().optional().editor({ input: 'icon' }),
+  size: sizeEnum.optional(),
+  trailing: z.boolean().optional(),
+  trailingIcon: z.string().optional().editor({ input: 'icon' }),
+  target: z.string().optional(),
+  color: colorEnum.optional(),
+  variant: variantEnum.optional(),
+})
+
+const createNavigationItemSchema = () => createNavigationSchema().extend({
+  children: z.array(createNavigationSchema()).optional(),
+})
+
 const createPageSchema = () => z.object({
   links: z.array(z.object({
     label: z.string(),
@@ -43,10 +61,15 @@ const createPageSchema = () => z.object({
   })).optional(),
 })
 
-// todo:
-// const createHeaderSchema = () => z.object({
-//
-// })
+const createHeaderSchema = () => z.object({
+  title: z.string().optional(),
+  logo: z.object({
+    light: z.string(),
+    dark: z.string().optional(),
+    alt: z.string().optional(),
+  }).optional(),
+  navigation: z.array(createNavigationItemSchema()).optional(),
+})
 
 const createFooterSchema = () => z.object({
   sections: z.array(z.object({
@@ -77,9 +100,23 @@ if (locales && Array.isArray(locales)) {
         cwd,
         include: `${code}/**/*`,
         prefix: `/${code}`,
-        exclude: [`${code}/index.md`, `${code}/footer.yml`],
+        exclude: [
+          `${code}/index.md`,
+          `${code}/header.yml`,
+          `${code}/footer.yml`,
+        ],
       },
       schema: createPageSchema(),
+    })
+
+    collections[`header_${code}`] = defineCollection({
+      type: 'data',
+      source: {
+        cwd,
+        include: `${code}/header.yml`,
+        prefix: `/${code}`,
+      },
+      schema: createHeaderSchema(),
     })
 
     collections[`footer_${code}`] = defineCollection({
@@ -107,9 +144,21 @@ else {
       source: {
         cwd,
         include: '**',
-        exclude: ['index.md', 'footer.yml'],
+        exclude: [
+          'index.md',
+          'header.yml',
+          'footer.yml',
+        ],
       },
       schema: createPageSchema(),
+    }),
+    header: defineCollection({
+      type: 'data',
+      source: {
+        cwd,
+        include: 'header.yml',
+      },
+      schema: createHeaderSchema(),
     }),
     footer: defineCollection({
       type: 'data',
