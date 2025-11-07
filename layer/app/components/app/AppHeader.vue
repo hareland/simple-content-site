@@ -8,17 +8,6 @@ const appConfig = useAppConfig()
 const site = useSiteConfig()
 
 const { localePath, isEnabled, locales } = useSiteI18n()
-
-const links = computed(() => appConfig.github && appConfig.github.url
-  ? [
-      {
-        'icon': 'i-simple-icons-github',
-        'to': appConfig.github.url,
-        'target': '_blank',
-        'aria-label': 'GitHub',
-      },
-    ]
-  : [])
 </script>
 
 <template>

@@ -2,20 +2,6 @@
 import { useSiteFooter } from '#imports'
 
 const { data: footer } = await useSiteFooter()
-
-const toast = useToast()
-
-const email = ref('')
-const loading = ref(false)
-
-function onSubmit() {
-  loading.value = true
-
-  toast.add({
-    title: 'Subscribed!',
-    description: 'You\'ve been subscribed to our newsletter.',
-  })
-}
 </script>
 
 <template>

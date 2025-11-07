@@ -1,6 +1,5 @@
 import type { DefinedCollection } from '@nuxt/content'
 import { defineContentConfig, defineCollection, z } from '@nuxt/content'
-import { NavigationMenuItem } from '@nuxt/ui'
 import { useNuxt } from '@nuxt/kit'
 import { joinURL } from 'ufo'
 
@@ -11,16 +10,16 @@ const locales = options.i18n?.locales
 const variantEnum = z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link'])
 const colorEnum = z.enum(['primary', 'secondary', 'neutral', 'error', 'warning', 'success', 'info'])
 const sizeEnum = z.enum(['xs', 'sm', 'md', 'lg', 'xl'])
-const orientationEnum = z.enum(['vertical', 'horizontal'])
+// const orientationEnum = z.enum(['vertical', 'horizontal'])
 
-const createBaseSchema = () => z.object({
-  title: z.string().nonempty(),
-  description: z.string().nonempty(),
-})
+// const createBaseSchema = () => z.object({
+//   title: z.string().nonempty(),
+//   description: z.string().nonempty(),
+// })
 
-const createFeatureItemSchema = () => createBaseSchema().extend({
-  icon: z.string().nonempty().editor({ input: 'icon' }),
-})
+// const createFeatureItemSchema = () => createBaseSchema().extend({
+//   icon: z.string().nonempty().editor({ input: 'icon' }),
+// })
 
 const createLinkSchema = () => z.object({
   class: z.string().optional(),
