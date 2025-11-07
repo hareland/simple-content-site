@@ -19,7 +19,7 @@ export default defineNuxtConfig({
         config.optimizeDeps.include ||= []
         config.optimizeDeps.include.push('@nuxt/content > slugify')
         config.optimizeDeps.include = config.optimizeDeps.include
-          .map(id => id.replace(/^@nuxt\/content > /, 'docus > @nuxt/content > '))
+          .map(id => id.replace(/^@nuxt\/content > /, 'simple-content-site > @nuxt/content > '))
       })
     },
   ],

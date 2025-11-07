@@ -5,7 +5,6 @@
     "build": "nuxt build --extends simple-content-site"
   },
   "dependencies": {
-    "docus": "latest",
     "better-sqlite3": "^12.2.0",
     "nuxt": "^4.2.0",
     "nuxt-studio": "^1.0.0-alpha.1"
