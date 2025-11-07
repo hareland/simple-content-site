@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSiteI18n } from '../../composables/useSiteI18n'
-import { useSiteHeader } from '#imports'
+import { useSiteHeader } from '../../composables/useSiteHeader'
 
 const { data: header } = await useSiteHeader()
 

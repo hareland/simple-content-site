@@ -11,12 +11,12 @@ export default defineNuxtConfig({
     }],
   },
   studio: {
-    route: '/admin',
+    // route: '/admin',
     repository: {
       owner: 'hareland',
-      repo: 'studio',
+      repo: 'simple-content-site',
       branch: 'main',
-      rootDir: 'playground/docus',
+      rootDir: 'playground',
       private: false,
     },
   },

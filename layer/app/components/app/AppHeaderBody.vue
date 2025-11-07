@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
-import { useSiteHeader } from '#imports'
+import { useSiteHeader } from '../../composables/useSiteHeader'
 
 const { data: header } = await useSiteHeader()
 
