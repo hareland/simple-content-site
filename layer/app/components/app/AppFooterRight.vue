@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+
+const props = defineProps<{
+  links?: ButtonProps[]
+}>()
+
 const appConfig = useAppConfig()
 
-const links = computed(() => [
+const footerLinks = computed(() => props.links || [
   ...Object.entries(appConfig.socials || {}).map(([key, url]) => ({
     'icon': `i-simple-icons-${key}`,
     'to': url,
@@ -18,9 +24,9 @@ const links = computed(() => [
 </script>
 
 <template>
-  <template v-if="links.length">
+  <template v-if="footerLinks.length">
     <UButton
-      v-for="(link, index) of links"
+      v-for="(link, index) of footerLinks"
       :key="index"
       size="sm"
       v-bind="{ color: 'neutral', variant: 'ghost', ...link }"

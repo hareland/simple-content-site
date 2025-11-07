@@ -9,14 +9,14 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "pnpm run site:dev",
-    "site:dev": "cd playground && nuxt dev --extends ../layer",
-    "site:build": "nuxt build playground --extends ../layer",
+    "dev": "pnpm run playground:dev",
+    "playground:dev": "cd playground && nuxt dev --extends ../layer",
+    "playground:build": "nuxt build playground --extends ../layer",
     "dev:prepare": "nuxt prepare layer && nuxt prepare playground --extends ../layer",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck layer",
     "layer:release": "release-it --config .release-it.layer.json && cd layer && npm publish",
-    "release": "pnpm run layer:release && pnpm run cli:release && release-it"
+    "release": "pnpm run layer:release && release-it"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.9.0",

@@ -9,7 +9,7 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { locale, isEnabled } = useDocusI18n()
+const { locale, isEnabled } = useSiteI18n()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
 const collectionName = computed(() => isEnabled.value ? `pages_${locale.value}` : 'pages')

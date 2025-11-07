@@ -7,7 +7,7 @@ const props = defineProps<{
   error: NuxtError
 }>()
 
-const { locale, locales, isEnabled, t, switchLocalePath } = useDocusI18n()
+const { locale, locales, isEnabled, t, switchLocalePath } = useSiteI18n()
 
 const lang = computed(() => nuxtUiLocales[locale.value as keyof typeof nuxtUiLocales]?.code || 'en')
 const dir = computed(() => nuxtUiLocales[locale.value as keyof typeof nuxtUiLocales]?.dir || 'ltr')

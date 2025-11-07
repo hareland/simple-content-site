@@ -1,7 +1,7 @@
 import type { LocaleObject } from '@nuxtjs/i18n'
 import en from '../../i18n/locales/en.json'
 
-export const useDocusI18n = () => {
+export const useSiteI18n = () => {
   const config = useRuntimeConfig().public
   const isEnabled = ref(!!config.i18n)
 

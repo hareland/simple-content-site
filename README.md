@@ -26,7 +26,7 @@ pnpm run dev
 This is a monorepo containing:
 
 - [**`/layer`**](./layer) - Content Site Nuxt layer (`nuxt-content-site`)
-- [**`/.examples`**](./.examples) - Example project
+- [**`/playground`**](./playground) - Example project
 
 ## 📄 License
 

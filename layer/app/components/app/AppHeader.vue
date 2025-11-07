@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useDocusI18n } from '../../composables/useDocusI18n'
+import { useSiteI18n } from '../../composables/useSiteI18n'
 
 const appConfig = useAppConfig()
 const site = useSiteConfig()
 
-const { localePath, isEnabled, locales } = useDocusI18n()
+const { localePath, isEnabled, locales } = useSiteI18n()
 
 const links = computed(() => appConfig.github && appConfig.github.url
   ? [

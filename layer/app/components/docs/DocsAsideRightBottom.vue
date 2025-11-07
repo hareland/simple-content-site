@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const appConfig = useAppConfig()
-const { t } = useDocusI18n()
+const { t } = useSiteI18n()
 </script>
 
 <template>

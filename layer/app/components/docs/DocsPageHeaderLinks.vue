@@ -4,7 +4,7 @@ import { useClipboard } from '@vueuse/core'
 const route = useRoute()
 
 const { copy, copied } = useClipboard()
-const { t } = useDocusI18n()
+const { t } = useSiteI18n()
 
 const markdownLink = computed(() => `${window?.location?.origin}/raw${route.path}.md`)
 const items = [

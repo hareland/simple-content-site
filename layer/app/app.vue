@@ -4,7 +4,7 @@ import * as nuxtUiLocales from '@nuxt/ui/locale'
 
 const { seo } = useAppConfig()
 const site = useSiteConfig()
-const { locale, locales, isEnabled, switchLocalePath } = useDocusI18n()
+const { locale, locales, isEnabled, switchLocalePath } = useSiteI18n()
 
 const lang = computed(() => nuxtUiLocales[locale.value as keyof typeof nuxtUiLocales]?.code || 'en')
 const dir = computed(() => nuxtUiLocales[locale.value as keyof typeof nuxtUiLocales]?.dir || 'ltr')

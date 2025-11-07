@@ -7,6 +7,33 @@ const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
 const locales = options.i18n?.locales
 
+const variantEnum = z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link'])
+const colorEnum = z.enum(['primary', 'secondary', 'neutral', 'error', 'warning', 'success', 'info'])
+const sizeEnum = z.enum(['xs', 'sm', 'md', 'lg', 'xl'])
+const orientationEnum = z.enum(['vertical', 'horizontal'])
+
+const createBaseSchema = () => z.object({
+  title: z.string().nonempty(),
+  description: z.string().nonempty(),
+})
+
+const createFeatureItemSchema = () => createBaseSchema().extend({
+  icon: z.string().nonempty().editor({ input: 'icon' }),
+})
+
+const createLinkSchema = () => z.object({
+  class: z.string().optional(),
+  label: z.string().nonempty(),
+  to: z.string().nonempty(),
+  icon: z.string().optional().editor({ input: 'icon' }),
+  size: sizeEnum.optional(),
+  trailing: z.boolean().optional(),
+  trailingIcon: z.string().optional().editor({ input: 'icon' }),
+  target: z.string().optional(),
+  color: colorEnum.optional(),
+  variant: variantEnum.optional(),
+})
+
 const createPageSchema = () => z.object({
   links: z.array(z.object({
     label: z.string(),
@@ -14,6 +41,19 @@ const createPageSchema = () => z.object({
     to: z.string(),
     target: z.string().optional(),
   })).optional(),
+})
+
+// todo:
+// const createHeaderSchema = () => z.object({
+//
+// })
+
+const createFooterSchema = () => z.object({
+  sections: z.array(z.object({
+    label: z.string().nonempty(),
+    children: z.array(createLinkSchema()),
+  })),
+  socials: z.array(createLinkSchema()),
 })
 
 let collections: Record<string, DefinedCollection>
@@ -37,9 +77,19 @@ if (locales && Array.isArray(locales)) {
         cwd,
         include: `${code}/**/*`,
         prefix: `/${code}`,
-        exclude: [`${code}/index.md`],
+        exclude: [`${code}/index.md`, `${code}/footer.yml`],
       },
       schema: createPageSchema(),
+    })
+
+    collections[`footer_${code}`] = defineCollection({
+      type: 'data',
+      source: {
+        cwd,
+        include: `${code}/footer.yml`,
+        prefix: `/${code}`,
+      },
+      schema: createFooterSchema(),
     })
   }
 }
@@ -57,16 +107,17 @@ else {
       source: {
         cwd,
         include: '**',
-        exclude: ['index.md'],
+        exclude: ['index.md', 'footer.yml'],
       },
       schema: createPageSchema(),
     }),
-    contact: defineCollection({
-      type: 'page',
+    footer: defineCollection({
+      type: 'data',
       source: {
         cwd,
-        include: 'contact.md',
+        include: 'footer.yml',
       },
+      schema: createFooterSchema(),
     }),
   }
 }

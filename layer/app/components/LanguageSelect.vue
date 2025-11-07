@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { locale, locales, switchLocalePath } = useDocusI18n()
+const { locale, locales, switchLocalePath } = useSiteI18n()
 
 function getEmojiFlag(locale: string): string {
   const languageToCountry: Record<string, string> = {
