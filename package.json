@@ -1,0 +1,36 @@
+{
+  "name": "nuxt-content-site-workspace",
+  "description": "A minimal layer for nuxt-content for a simple website with basic functions.",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hareland/nuxt-content-site-layer.git"
+  },
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "pnpm run site:dev",
+    "site:dev": "cd site && nuxt dev --extends ../layer",
+    "site:build": "nuxt build site --extends ../layer",
+    "dev:prepare": "nuxt prepare layer && nuxt prepare site --extends ../layer",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck layer",
+    "layer:release": "release-it --config .release-it.layer.json && cd layer && npm publish",
+    "release": "pnpm run layer:release && pnpm run cli:release && release-it"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.9.0",
+    "@nuxt/eslint-config": "^1.9.0",
+    "@release-it/bumper": "^7.0.5",
+    "@release-it/conventional-changelog": "^10.0.1",
+    "eslint": "^9.37.0",
+    "nuxt": "4.1.3",
+    "release-it": "^19.0.5",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.1.1"
+  },
+  "resolutions": {
+    "nuxi": "3.28.0"
+  },
+  "packageManager": "pnpm@10.18.3"
+}

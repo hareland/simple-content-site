@@ -1,0 +1,16 @@
+packages:
+  - ./
+  - site
+  - layer
+
+ignoredBuiltDependencies:
+  - '@parcel/watcher'
+  - '@tailwindcss/oxide'
+  - esbuild
+  - unrs-resolver
+  - vue-demi
+
+onlyBuiltDependencies:
+  - '@vercel/speed-insights'
+  - better-sqlite3
+  - sharp
