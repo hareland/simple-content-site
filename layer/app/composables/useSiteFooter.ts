@@ -9,7 +9,7 @@ export const useSiteFooter = () => {
     const customFooter = await queryCollection(collectionName.value as keyof Collections).first()
     if (!customFooter) {
       // attempt to find for the default language
-      if (isEnabled.value) {
+      if (isEnabled.value && defaultLocale) {
         const fallbackFooter = await queryCollection(`footer_${defaultLocale}` as keyof Collections).first()
         if (fallbackFooter) {
           return fallbackFooter as FooterCollectionItem

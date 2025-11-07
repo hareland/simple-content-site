@@ -9,7 +9,7 @@ export const useSiteHeader = () => {
   return useAsyncData(collectionName, async () => {
     const customHeader = await queryCollection(collectionName.value as keyof Collections).first()
     if (!customHeader) {
-      if (isEnabled.value) {
+      if (isEnabled.value && defaultLocale) {
         const fallbackHeader = await queryCollection(`header_${defaultLocale}` as keyof Collections).first()
         if (fallbackHeader) {
           return fallbackHeader as HeaderCollectionItem
