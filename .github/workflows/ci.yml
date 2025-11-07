@@ -53,5 +53,5 @@ jobs:
       #        run: pnpm run build
       #        working-directory: ./cli
 
-      - name: Publish Layer
-        run: npx pkg-pr-new publish --compact './layer'
+#      - name: Publish Layer
+#        run: npx pkg-pr-new publish --compact './layer'
