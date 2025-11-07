@@ -1,0 +1,13 @@
+{
+  "name": "simple-content-site-minimal-example",
+  "scripts": {
+    "dev": "nuxt dev --extends simple-content-site",
+    "build": "nuxt build --extends simple-content-site"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "nuxt": "^4.2.0",
+    "nuxt-studio": "^1.0.0-alpha.1",
+    "simple-content-site": "workspace:*"
+  }
+}

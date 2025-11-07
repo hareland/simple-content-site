@@ -1,6 +1,6 @@
 packages:
   - ./
-  - site
+  - ./playground/**
   - layer
 
 ignoredBuiltDependencies:

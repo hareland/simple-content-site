@@ -1,0 +1,6 @@
+title: Minimal
+navigation:
+  - label: Home
+    to: /
+  - label: Pricing
+    to: /pricing

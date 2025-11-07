@@ -9,10 +9,18 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { locale, isEnabled } = useSiteI18n()
+const { locale, isEnabled, defaultLocale } = useSiteI18n()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
-const collectionName = computed(() => isEnabled.value ? `pages_${locale.value}` : 'pages')
+const collectionName = computed(() => {
+  console.log('isEnabled', isEnabled.value)
+  console.log('defaultLocale', defaultLocale.value)
+  console.log('locale', locale.value)
+  if (!isEnabled.value || !defaultLocale.value) {
+    return 'pages'
+  }
+  return `pages_${locale.value}`
+})
 
 const [{ data: page }] = await Promise.all([
   useAsyncData(kebabCase(route.path), () => queryCollection(collectionName.value as keyof Collections).path(route.path).first() as Promise<PagesCollectionItem>),

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
       owner: 'hareland',
       repo: 'simple-content-site',
       branch: 'main',
-      rootDir: 'playground',
+      rootDir: 'playground/i18n',
       private: false,
     },
   },
