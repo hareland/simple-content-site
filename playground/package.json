@@ -1,8 +1,8 @@
 {
-  "name": "simple-site-starter",
+  "name": "simple-content-site-example",
   "scripts": {
-    "dev": "nuxt dev --extends nuxt-content-site",
-    "build": "nuxt build --extends nuxt-content-site"
+    "dev": "nuxt dev --extends simple-content-site",
+    "build": "nuxt build --extends simple-content-site"
   },
   "dependencies": {
     "docus": "latest",

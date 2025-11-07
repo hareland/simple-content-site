@@ -5,19 +5,20 @@ navigation:
   icon: i-lucide-info
 seo:
   title: About us
-  description: Discover how to create, manage, and publish documentation
-    effortlessly with Docus.
+  description: Discover how to create, manage, and publish documentation effortlessly with Docus.
 ---
 
 ::u-page-header
 #title
-{{$doc.title}}
-#description
-{{$doc.description}}
-::
-## Hello
-This is cool
+{{ $doc.title }}
 
+#description
+{{ $doc.description }}
+::
+
+## Hello
+
+This is pretty cool, you can simply edit this right in the browser.
 
 ::card-group
 :::card

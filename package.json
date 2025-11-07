@@ -4,15 +4,15 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hareland/nuxt-content-site-layer.git"
+    "url": "git+https://github.com/hareland/simple-content-site.git"
   },
   "private": true,
   "license": "MIT",
   "scripts": {
     "dev": "pnpm run site:dev",
-    "site:dev": "cd site && nuxt dev --extends ../layer",
-    "site:build": "nuxt build site --extends ../layer",
-    "dev:prepare": "nuxt prepare layer && nuxt prepare site --extends ../layer",
+    "site:dev": "cd playground && nuxt dev --extends ../layer",
+    "site:build": "nuxt build playground --extends ../layer",
+    "dev:prepare": "nuxt prepare layer && nuxt prepare playground --extends ../layer",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck layer",
     "layer:release": "release-it --config .release-it.layer.json && cd layer && npm publish",
