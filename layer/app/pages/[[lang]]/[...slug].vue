@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { kebabCase } from 'scule'
-import type { ContentNavigationItem, Collections, DocsCollectionItem } from '@nuxt/content'
+import type { ContentNavigationItem, Collections, PagesCollectionItem } from '@nuxt/content'
 import { findPageHeadline } from '@nuxt/content/utils'
 import { addPrerenderPath } from '../../utils/prerender'
 
@@ -15,7 +15,7 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 const collectionName = computed(() => isEnabled.value ? `pages_${locale.value}` : 'pages')
 
 const [{ data: page }] = await Promise.all([
-  useAsyncData(kebabCase(route.path), () => queryCollection(collectionName.value as keyof Collections).path(route.path).first() as Promise<DocsCollectionItem>),
+  useAsyncData(kebabCase(route.path), () => queryCollection(collectionName.value as keyof Collections).path(route.path).first() as Promise<PagesCollectionItem>),
 ])
 
 if (!page.value) {

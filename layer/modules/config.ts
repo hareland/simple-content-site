@@ -16,15 +16,15 @@ export default defineNuxtModule({
     const gitInfo = await getLocalGitInfo(dir) || getGitEnv()
     const siteName = nuxt.options?.site?.name || meta.name || gitInfo?.name || ''
 
-    nuxt.options.llms = defu(nuxt.options.llms, {
-      domain: url,
-      title: siteName,
-      description: meta.description || '',
-      full: {
-        title: siteName,
-        description: meta.description || '',
-      },
-    })
+    // nuxt.options.llms = defu(nuxt.options.llms, {
+    //   domain: url,
+    //   title: siteName,
+    //   description: meta.description || '',
+    //   full: {
+    //     title: siteName,
+    //     description: meta.description || '',
+    //   },
+    // })
 
     nuxt.options.site = defu(nuxt.options.site, {
       url,
