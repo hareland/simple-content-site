@@ -9,19 +9,13 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { locale, isEnabled, t } = useDocusI18n()
-const appConfig = useAppConfig()
+const { locale, isEnabled } = useDocusI18n()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
 const collectionName = computed(() => isEnabled.value ? `pages_${locale.value}` : 'pages')
 
-const [{ data: page }, { data: surround }] = await Promise.all([
+const [{ data: page }] = await Promise.all([
   useAsyncData(kebabCase(route.path), () => queryCollection(collectionName.value as keyof Collections).path(route.path).first() as Promise<DocsCollectionItem>),
-  useAsyncData(`${kebabCase(route.path)}-surround`, () => {
-    return queryCollectionItemSurroundings(collectionName.value as keyof Collections, route.path, {
-      fields: ['description'],
-    })
-  }),
 ])
 
 if (!page.value) {
@@ -48,23 +42,6 @@ watch(() => navigation?.value, () => {
 
 defineOgImageComponent('Docs', {
   headline: headline.value,
-})
-
-const github = computed(() => appConfig.github ? appConfig.github : null)
-
-const editLink = computed(() => {
-  if (!github.value) {
-    return
-  }
-
-  return [
-    github.value.url,
-    'edit',
-    github.value.branch,
-    github.value.rootDir,
-    'content',
-    `${page.value?.stem}.${page.value?.extension}`,
-  ].filter(Boolean).join('/')
 })
 </script>
 
