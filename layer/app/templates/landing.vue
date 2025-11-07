@@ -7,7 +7,7 @@ const { locale, isEnabled } = useSiteI18n()
 // Dynamic collection name based on i18n status
 const collectionName = computed(() => isEnabled.value ? `landing_${locale.value}` : 'landing')
 
-const { data: page } = await useAsyncData(collectionName.value, () => queryCollection(collectionName.value as keyof Collections).path(route.path).first())
+const { data: page } = await useAsyncData(collectionName.value, () => queryCollection(collectionName.value as keyof Omit<Collections, 'header' | 'footer'>).path(route.path).first())
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: import.meta.dev ? `Page ${route.path} not found in ${collectionName.value}` : 'Page not found', fatal: true })
 }

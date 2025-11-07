@@ -29,7 +29,7 @@ export default eventHandler(async (event) => {
     }
   }
 
-  const page = await queryCollection(event, collectionName as keyof Collections).path(path).first()
+  const page = await queryCollection(event, collectionName as keyof Omit<Collections, 'header' | 'footer'>).path(path).first()
   if (!page) {
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }
