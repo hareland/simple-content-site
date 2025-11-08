@@ -12,7 +12,7 @@ const { localePath, isEnabled, locales } = useSiteI18n()
 
 <template>
   <UHeader
-    :ui="{ center: 'flex-1' }"
+    :ui="{ center: header?.navigation && header.navigation.length > 0 ? '' : 'flex-1' }"
     :to="localePath('/')"
     :title="header?.title || appConfig.header?.title || site.name"
   >
