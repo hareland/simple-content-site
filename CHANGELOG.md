@@ -1,5 +1,7 @@
 # Changelog
 
+## [1.0.8](https://github.com/hareland/simple-content-site/compare/v1.0.7...v1.0.8) (2025-11-08)
+
 ## [1.0.7](https://github.com/hareland/simple-content-site/compare/v1.0.6...v1.0.7) (2025-11-08)
 
 ### Features
