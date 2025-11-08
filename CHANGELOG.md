@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.7](https://github.com/hareland/simple-content-site/compare/v1.0.6...v1.0.7) (2025-11-08)
+
+### Features
+
+* add props definition for class handling in `AppHeaderLogo.vue` and refine `class` binding using `$props` for improved reactivity ([f3443e2](https://github.com/hareland/simple-content-site/commit/f3443e22eb02a2209b372bb8d936109883642f17))
+* integrate tailwind-merge for dynamic class composition, enhance logo configuration, and update schemas accordingly ([ed15952](https://github.com/hareland/simple-content-site/commit/ed15952b9c67ad387ef216b7d60d452065c33afb))
+
 ## [1.0.6](https://github.com/hareland/simple-content-site/compare/v1.0.5...v1.0.6) (2025-11-07)
 
 ## [1.0.5](https://github.com/hareland/simple-content-site/compare/v0.0.1...v1.0.5) (2025-11-07)
