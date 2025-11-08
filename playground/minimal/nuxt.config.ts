@@ -8,7 +8,6 @@ export default defineNuxtConfig({
       repo: 'simple-content-site',
       branch: 'main',
       rootDir: 'playground/minimal',
-      private: false,
     },
   },
 })

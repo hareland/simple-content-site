@@ -66,6 +66,7 @@ const createHeaderSchema = () => z.object({
     light: z.string(),
     dark: z.string().optional(),
     alt: z.string().optional(),
+    class: z.string().optional(),
   }).optional(),
   navigation: z.array(createNavigationItemSchema()).optional(),
 })

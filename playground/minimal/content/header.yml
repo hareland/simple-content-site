@@ -1,4 +1,8 @@
 title: Minimal
+logo:
+  light: /logo.png
+  dark: /logo.png
+  class: w-16
 navigation:
   - label: Home
     to: /
