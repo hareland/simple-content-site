@@ -5,7 +5,7 @@ navigation:
   icon: i-lucide-info
 seo:
   title: About us
-  description: Discover how to create, manage, and publish documentation effortlessly with Docus.
+  description: Discover how to create, manage, and publish documentation effortlessly with Site.
 ---
 
 ::u-page-header

@@ -16,7 +16,7 @@ export default defineNuxtModule({
     const layerDir = resolver.resolve('../app')
 
     const cssTemplate = addTemplate({
-      filename: 'docus.css',
+      filename: 'website.css',
       getContents: () => {
         return `@import ${JSON.stringify(tailwindPath)};
 @import ${JSON.stringify(uiPath)};

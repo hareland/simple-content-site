@@ -1,8 +1,8 @@
-# Docus i18n Starter
+# Site i18n Starter
 
-> A beautiful, internationalized starter for creating multi-language documentation with Docus
+> A beautiful, internationalized starter for creating multi-language documentation with Site
 
-This is the i18n Docus starter template that provides everything you need to build beautiful, multi-language documentation sites with Markdown and Vue components.
+This is the i18n Site starter template that provides everything you need to build beautiful, multi-language documentation sites with Markdown and Vue components.
 
 ## ✨ Features
 
@@ -92,11 +92,11 @@ This starter comes pre-configured with:
 - [Nuxt UI](https://ui.nuxt.com) - UI components
 - [Nuxt Image](https://image.nuxt.com/) - Optimized images
 - [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
-- [Docus Layer](https://www.npmjs.com/package/docus) - Documentation theme
+- [Site Layer](https://www.npmjs.com/package/Site) - Documentation theme
 
 ## 📖 Documentation
 
-For detailed documentation on customizing your Docus project, visit the [Docus Documentation](https://docus.dev)
+For detailed documentation on customizing your Site project, visit the [Site Documentation](https://Site.dev)
 
 ## 🚀 Deployment
 

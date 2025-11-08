@@ -68,11 +68,11 @@ export default defineNuxtModule({
         const hasContentFolder = existsSync(contentPath)
 
         if (!hasLocaleFile) {
-          console.warn(`[Docus] Locale file not found: ${localeCode}.json - skipping locale "${localeCode}"`)
+          console.warn(`[Site] Locale file not found: ${localeCode}.json - skipping locale "${localeCode}"`)
         }
 
         if (!hasContentFolder) {
-          console.warn(`[Docus] Content folder not found: content/${localeCode}/ - skipping locale "${localeCode}"`)
+          console.warn(`[Site] Content folder not found: content/${localeCode}/ - skipping locale "${localeCode}"`)
         }
 
         return hasLocaleFile && hasContentFolder
@@ -85,7 +85,7 @@ export default defineNuxtModule({
       }
 
       // Expose filtered locales
-      nuxt.options.runtimeConfig.public.docus = {
+      nuxt.options.runtimeConfig.public.Site = {
         filteredLocales,
       }
 

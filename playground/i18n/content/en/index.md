@@ -2,7 +2,7 @@
 seo:
   title: Make a simple website with Markdown
   description: Ship fast, flexible, and SEO-optimized documentation with beautiful
-    design out of the box. Docus brings together the best of the Nuxt ecosystem.
+    design out of the box. Site brings together the best of the Nuxt ecosystem.
     Powered by Nuxt UI.
 ---
 
@@ -57,7 +57,7 @@ Shipped with many cool things
   Built with [Nuxt 4]{.text-primary}
   
   #description
-  Optimized by the most famous Vue framework. Docus gives you everything you need to build fast, performant, and SEO-friendly websites.
+  Optimized by the most famous Vue framework. Site gives you everything you need to build fast, performant, and SEO-friendly websites.
   :::
 
   :::u-page-feature
@@ -70,7 +70,7 @@ Shipped with many cool things
   Powered by [Nuxt UI]{.text-primary}
   
   #description
-  Beautiful out of the box, minimal by design but highly customizable. Docus leverages Nuxt UI to give you the best docs writing experience with zero boilerplate, just focus on your content.
+  Beautiful out of the box, minimal by design but highly customizable. Site leverages Nuxt UI to give you the best docs writing experience with zero boilerplate, just focus on your content.
   :::
 
   :::u-page-feature
@@ -122,6 +122,6 @@ Shipped with many cool things
   Built-in navigation and [full-text search]{.text-primary}
   
   #description
-  Only focus on ordering your content, Docus handles the search modal and auto-generates the side navigation for you.
+  Only focus on ordering your content, Site handles the search modal and auto-generates the side navigation for you.
   :::
 ::

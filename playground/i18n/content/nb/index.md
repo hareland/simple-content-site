@@ -27,7 +27,7 @@ Kom i gang
 color: neutral
 icon: simple-icons-github
 size: xl
-to: https://github.com/nuxt-content/docus
+to: https://github.com/nuxt-content/Site
 variant: outline
 ---
 Star på GitHub
@@ -49,7 +49,7 @@ to: https://nuxt.com
 Bygget med [Nuxt 4]{.text-primary}
 
 #description
-Drevet av ditt favoritt Vue-metarammeverk. Docus gir deg alt du trenger for å lage raske, ytelsessterke og SEO-optimaliserte nettsteder.
+Drevet av ditt favoritt Vue-metarammeverk. Site gir deg alt du trenger for å lage raske, ytelsessterke og SEO-optimaliserte nettsteder.
 :::
 
 :::u-page-feature
@@ -62,7 +62,7 @@ to: https://ui.nuxt.com/
 Designet med [Nuxt UI]{.text-primary}
 
 #description
-Stilig, minimalistisk og tilpassbart. Docus integrerer Nuxt UI for å gi deg den beste opplevelsen for å skrive dokumentasjon uten boilerplate – fokuser bare på innholdet ditt.
+Stilig, minimalistisk og tilpassbart. Site integrerer Nuxt UI for å gi deg den beste opplevelsen for å skrive dokumentasjon uten boilerplate – fokuser bare på innholdet ditt.
 :::
 
 :::u-page-feature
@@ -114,6 +114,6 @@ to: https://ui.nuxt.com/components/content-search
 Innebygd navigasjon og [tekstsøk]{.text-primary}
 
 #description
-Fokuser kun på innholdet ditt – Docus genererer automatisk et søkemodal og sidesnavigasjon for deg.
+Fokuser kun på innholdet ditt – Site genererer automatisk et søkemodal og sidesnavigasjon for deg.
 :::
 ::

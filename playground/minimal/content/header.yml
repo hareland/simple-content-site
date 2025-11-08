@@ -2,7 +2,7 @@ title: Minimal
 logo:
   light: /logo.png
   dark: /logo.png
-  class: w-16
+  class: h-full
 navigation:
   - label: Home
     to: /

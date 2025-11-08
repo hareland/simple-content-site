@@ -17,7 +17,7 @@ To contribute to the CLI tool:
 # Install dependencies
 pnpm install
 
-# Run the dev server to run the docus docs
+# Run the dev server
 pnpm run dev
 ```
 
@@ -34,4 +34,4 @@ Published under the [MIT](LICENSE) license.
 
 ---
 
-Inspired by [Docus](https://docus.dev)
+Inspired by [Site](https://Site.dev)
