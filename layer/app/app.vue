@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PageCollections } from '@nuxt/content'
 import * as nuxtUiLocales from '@nuxt/ui/locale'
+import type { ResolvableArray, ResolvableLink } from '@unhead/vue'
 
 const { seo } = useAppConfig()
 const site = useSiteConfig()
@@ -9,6 +10,31 @@ const { locale, locales, isEnabled, switchLocalePath } = useSiteI18n()
 const lang = computed(() => nuxtUiLocales[locale.value as keyof typeof nuxtUiLocales]?.code || 'en')
 const dir = computed(() => nuxtUiLocales[locale.value as keyof typeof nuxtUiLocales]?.dir || 'ltr')
 const collectionName = computed(() => isEnabled.value ? `pages_${locale.value}` : 'pages')
+const headLinks: ResolvableArray<ResolvableLink> = []
+
+if (isEnabled.value) {
+  const route = useRoute()
+  const defaultLocale = useRuntimeConfig().public.i18n.defaultLocale!
+  headLinks.push({
+    rel: 'canonical',
+    href: `/${locale.value}${route.path}`,
+  })
+  headLinks.push(...locales.map((l) => {
+    return {
+      rel: 'alternate',
+      hreflang: l.code,
+      href: `/${l.code}${route.path}`,
+    }
+  }))
+
+  // Handle redirect to correct locale if enabled.
+  onMounted(() => {
+    const currentLocale = route.path.split('/')[1]
+    if (!locales.some(locale => locale.code === currentLocale)) {
+      return navigateTo(switchLocalePath(defaultLocale) as string)
+    }
+  })
+}
 
 useHead({
   meta: [
@@ -16,6 +42,7 @@ useHead({
   ],
   link: [
     { rel: 'icon', href: '/favicon.ico' },
+    ...headLinks,
   ],
   htmlAttrs: {
     lang,
@@ -30,17 +57,6 @@ useSeoMeta({
   ogSiteName: site.name,
   twitterCard: 'summary_large_image',
 })
-
-if (isEnabled.value) {
-  const route = useRoute()
-  const defaultLocale = useRuntimeConfig().public.i18n.defaultLocale!
-  onMounted(() => {
-    const currentLocale = route.path.split('/')[1]
-    if (!locales.some(locale => locale.code === currentLocale)) {
-      return navigateTo(switchLocalePath(defaultLocale) as string)
-    }
-  })
-}
 
 const { data: navigation } = await useAsyncData(() => `navigation_${collectionName.value}`, () => queryCollectionNavigation(collectionName.value as keyof PageCollections), {
   transform: (data) => {
