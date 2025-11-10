@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.9](https://github.com/hareland/simple-content-site/compare/v1.0.8...v1.0.9) (2025-11-10)
+
+### Features
+
+* add `titleTemplate` field to `nuxt.schema.ts` configuration ([6cc708f](https://github.com/hareland/simple-content-site/commit/6cc708faff6c70144b8b398448fdc5df2bb6e2fe))
+
 ## [1.0.8](https://github.com/hareland/simple-content-site/compare/v1.0.7...v1.0.8) (2025-11-08)
 
 ## [1.0.7](https://github.com/hareland/simple-content-site/compare/v1.0.6...v1.0.7) (2025-11-08)

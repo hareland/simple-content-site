@@ -1,7 +1,7 @@
 {
   "name": "simple-content-site",
   "description": "Nuxt layer for simple website with basic functions.",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "type": "module",
   "main": "./nuxt.config.ts",
   "repository": {
