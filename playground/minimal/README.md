@@ -1,113 +1,66 @@
-# Site i18n Starter
+# Simple Content Site — Minimal Starter
 
-> A beautiful, internationalized starter for creating multi-language documentation with Site
+A tiny playground showing how to build a content-driven site where each Markdown file is a page. No i18n by default. Perfect for quick prototypes or small sites.
 
-This is the i18n Site starter template that provides everything you need to build beautiful, multi-language documentation sites with Markdown and Vue components.
+## Features
 
-## ✨ Features
+- File-based pages with Markdown (MDC ready)
+- Landing page from \`index.md\`
+- Header/Footer content from YAML
+- Zero boilerplate Nuxt setup (extends the main layer)
+- Works with Nuxt Studio for visual editing
 
-- 🌍 **Internationalization** - Native i18n support for multi-language docs
-- 🎨 **Beautiful Design** - Clean, modern documentation theme
-- 📱 **Responsive** - Mobile-first responsive design  
-- 🌙 **Dark Mode** - Built-in dark/light mode support
-- 🔍 **Search** - Full-text search functionality per language
-- 📝 **Markdown Enhanced** - Extended markdown with custom components
-- 🎨 **Customizable** - Easy theming and brand customization
-- ⚡ **Fast** - Optimized for performance with Nuxt 4
-- 🔧 **TypeScript** - Full TypeScript support
-
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
-# Install dependencies
+# Install
 npm install
 
-# Start development server
+# Dev server
 npm run dev
 ```
 
-Your multilingual documentation site will be running at `http://localhost:3000`
+App runs at <http://localhost:3000>
 
-## 🌍 Languages
+## Content Model
 
-This starter comes pre-configured with:
-- 🇺🇸 **English** (`en`) - Default language
-- 🇫🇷 **Français** (`fr`) - French translation
+- Landing page: \`content/index.md\`
+- Pages: any other Markdown files under \`content/\`
+- Exceptions:
+    - \`/header.yml\`: header configuration (see example in \`content/header.yml\`)
+    - \`/footer.yml\`: footer configuration (not used in this minimal example)
 
-## 📁 Project Structure
-
-```
-my-docs/
-├── content/              # Your markdown content
-│   ├── en/              # English content
-│   │   ├── index.md     # English homepage
-│   │   └── docs/        # English documentation
-│   └── fr/              # French content
-│       ├── index.md     # French homepage
-│       └── docs/        # French documentation
-├── public/              # Static assets
-├── nuxt.config.ts       # Nuxt configuration with i18n setup
-└── package.json         # Dependencies and scripts
-```
-
-### Content Structure
-
-The content is organized by language, making it easy to manage translations:
+## Project Structure
 
 ```
-content/
-├── en/                   # English content
-│   ├── index.md
-│   ├── 1.getting-started/
-│   │   ├── installation.md
-│   │   └── configuration.md
-│   └── 2.essentials/
-│       ├── markdown.md
-│       └── components.md
-└── fr/                   # French content
-    ├── index.md
-    ├── 1.getting-started/
-    │   ├── installation.md
-    │   └── configuration.md
-    └── 2.essentials/
-        ├── markdown.md
-        └── components.md
+playground/minimal/
+├── content/
+│   ├── index.md       # Landing page
+│   └── header.yml     # Header data (title, logo, navigation)
+├── public/
+│   └── logo.png
+├── nuxt.config.ts     # Extends the main layer; i18n disabled here
+└── package.json
 ```
 
-## 🔗 URL Structure
+Notes:
+- There is no locale prefixing. \`index.md\` is the root “/”.
+- All Markdown files except \`index.md\` are treated as pages and routed automatically.
+- Header/Footer YAML are data files, not pages.
 
-The i18n starter generates URLs with language prefixes:
-
-- English: `/en/getting-started/installation`
-- French: `/fr/getting-started/installation`
-- Default locale fallback: `/getting-started/installation` (redirects to English)
-
-## ⚡ Built with
-
-This starter comes pre-configured with:
-
-- [Nuxt 4](https://nuxt.com) - The web framework
-- [Nuxt Content](https://content.nuxt.com/) - File-based CMS
-- [Nuxt i18n](https://i18n.nuxt.com/) - Internationalization
-- [Nuxt UI](https://ui.nuxt.com) - UI components
-- [Nuxt Image](https://image.nuxt.com/) - Optimized images
-- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
-- [Site Layer](https://www.npmjs.com/package/Site) - Documentation theme
-
-## 📖 Documentation
-
-For detailed documentation on customizing your Site project, visit the [Site Documentation](https://Site.dev)
-
-## 🚀 Deployment
-
-Build for production:
+## Scripts
 
 ```bash
-npm run build
+npm run dev   # Start dev server
+npm run build # Build for production
 ```
 
-The built files will be in the `.output` directory, ready for deployment to any hosting provider that supports Node.js.
+## Built With
 
-## 📄 License
+- Nuxt 4
+- Nuxt Content
+- Nuxt Studio (optional)
 
-[MIT License](https://opensource.org/licenses/MIT) 
+## License
+
+MIT

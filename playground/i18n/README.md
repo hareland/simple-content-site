@@ -1,113 +1,74 @@
-# Site i18n Starter
+# Simple Content Site — i18n Starter
 
-> A beautiful, internationalized starter for creating multi-language documentation with Site
+A playground showing a multilingual, content-driven site. Each Markdown file is a page. Landing pages come from \`<locale>/index.md\`. All other Markdown files are pages for that locale.
 
-This is the i18n Site starter template that provides everything you need to build beautiful, multi-language documentation sites with Markdown and Vue components.
+## Features
 
-## ✨ Features
+- Locale-based content routing (\`/en\`, \`/nb\`, …)
+- Landing pages per locale (\`en/index.md\`, \`nb/index.md\`)
+- Header/Footer per locale via YAML
+- Works with Nuxt Studio for visual editing
 
-- 🌍 **Internationalization** - Native i18n support for multi-language docs
-- 🎨 **Beautiful Design** - Clean, modern documentation theme
-- 📱 **Responsive** - Mobile-first responsive design  
-- 🌙 **Dark Mode** - Built-in dark/light mode support
-- 🔍 **Search** - Full-text search functionality per language
-- 📝 **Markdown Enhanced** - Extended markdown with custom components
-- 🎨 **Customizable** - Easy theming and brand customization
-- ⚡ **Fast** - Optimized for performance with Nuxt 4
-- 🔧 **TypeScript** - Full TypeScript support
-
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
-# Install dependencies
+# Install
 npm install
 
-# Start development server
+# Dev server
 npm run dev
 ```
 
-Your multilingual documentation site will be running at `http://localhost:3000`
+App runs at <http://localhost:3000>. Language prefixes are added to URLs.
 
-## 🌍 Languages
+## Content Model
 
-This starter comes pre-configured with:
-- 🇺🇸 **English** (`en`) - Default language
-- 🇫🇷 **Français** (`fr`) - French translation
+Per locale folder under \`content/\`:
+- Landing page: \`<locale>/index.md\`
+- Pages: any other Markdown files in \`<locale>/\`
+- Exceptions (data only, not pages):
+    - \`<locale>/header.yml\`: header configuration (title, logo, navigation)
+    - \`<locale>/footer.yml\`: footer configuration (links, socials)
 
-## 📁 Project Structure
-
-```
-my-docs/
-├── content/              # Your markdown content
-│   ├── en/              # English content
-│   │   ├── index.md     # English homepage
-│   │   └── docs/        # English documentation
-│   └── fr/              # French content
-│       ├── index.md     # French homepage
-│       └── docs/        # French documentation
-├── public/              # Static assets
-├── nuxt.config.ts       # Nuxt configuration with i18n setup
-└── package.json         # Dependencies and scripts
-```
-
-### Content Structure
-
-The content is organized by language, making it easy to manage translations:
+## Project Structure
 
 ```
-content/
-├── en/                   # English content
-│   ├── index.md
-│   ├── 1.getting-started/
-│   │   ├── installation.md
-│   │   └── configuration.md
-│   └── 2.essentials/
-│       ├── markdown.md
-│       └── components.md
-└── fr/                   # French content
-    ├── index.md
-    ├── 1.getting-started/
-    │   ├── installation.md
-    │   └── configuration.md
-    └── 2.essentials/
-        ├── markdown.md
-        └── components.md
+playground/i18n/
+├── content/
+│   ├── en/
+│   │   ├── index.md     # English landing page
+│   │   ├── about.md     # English page
+│   │   ├── header.yml   # English header data
+│   │   └── footer.yml   # English footer data
+│   └── nb/
+│       ├── index.md     # Norwegian landing page
+│       └── about.md     # Norwegian page
+├── public/
+│   ├── favicon.ico
+│   └── mountains.webp
+├── nuxt.config.ts       # i18n enabled, locales declared
+└── package.json
 ```
 
-## 🔗 URL Structure
+Notes:
+- URLs include a locale prefix, e.g. \`/en/about\`, \`/nb/about\`.
+- Default locale appears without a prefix when configured to do so.
+- \`header.yml\` and \`footer.yml\` are locale-scoped data files.
 
-The i18n starter generates URLs with language prefixes:
-
-- English: `/en/getting-started/installation`
-- French: `/fr/getting-started/installation`
-- Default locale fallback: `/getting-started/installation` (redirects to English)
-
-## ⚡ Built with
-
-This starter comes pre-configured with:
-
-- [Nuxt 4](https://nuxt.com) - The web framework
-- [Nuxt Content](https://content.nuxt.com/) - File-based CMS
-- [Nuxt i18n](https://i18n.nuxt.com/) - Internationalization
-- [Nuxt UI](https://ui.nuxt.com) - UI components
-- [Nuxt Image](https://image.nuxt.com/) - Optimized images
-- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
-- [Site Layer](https://www.npmjs.com/package/Site) - Documentation theme
-
-## 📖 Documentation
-
-For detailed documentation on customizing your Site project, visit the [Site Documentation](https://Site.dev)
-
-## 🚀 Deployment
-
-Build for production:
+## Scripts
 
 ```bash
-npm run build
+npm run dev   # Start dev server
+npm run build # Build for production
 ```
 
-The built files will be in the `.output` directory, ready for deployment to any hosting provider that supports Node.js.
+## Built With
 
-## 📄 License
+- Nuxt 4
+- Nuxt Content
+- Nuxt i18n
+- Nuxt Studio (optional)
 
-[MIT License](https://opensource.org/licenses/MIT) 
+## License
+
+MIT
