@@ -2,10 +2,7 @@
 
 A simple layer for setting up a simple website using Nuxt, Nuxt UI and Nuxt Content.
 
-
 ## 🛠️ Development
-
-This repository contains the CLI tool source code.
 
 ### Local Development
 
