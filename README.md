@@ -34,4 +34,4 @@ Published under the [MIT](LICENSE) license.
 
 ---
 
-Inspired by [Site](https://Site.dev)
+Heavily inspired by [Docus](https://docus.dev)
