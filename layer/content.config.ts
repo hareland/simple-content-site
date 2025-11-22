@@ -72,11 +72,15 @@ const createHeaderSchema = () => z.object({
 })
 
 const createFooterSchema = () => z.object({
+  // @deprecated replaced by 'top'
   sections: z.array(z.object({
     label: z.string().nonempty(),
     children: z.array(createLinkSchema()),
   })),
+  left: z.array(createLinkSchema()),
+  // @deprecated Replaced by 'right'
   socials: z.array(createLinkSchema()),
+  right: z.array(createLinkSchema()),
 })
 
 let collections: Record<string, DefinedCollection>
