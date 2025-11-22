@@ -13,9 +13,6 @@ const { locale, isEnabled, defaultLocale } = useSiteI18n()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
 const collectionName = computed(() => {
-  console.log('isEnabled', isEnabled.value)
-  console.log('defaultLocale', defaultLocale.value)
-  console.log('locale', locale.value)
   if (!isEnabled.value || !defaultLocale.value) {
     return 'pages'
   }
