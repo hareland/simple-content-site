@@ -1,4 +1,5 @@
 declare module '#app' {
+
   interface PageMeta {
     /**
      * Define if the page should display the header
