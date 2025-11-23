@@ -6,8 +6,13 @@ const { data: footer } = await useSiteFooter()
 
 <template>
   <UFooter>
-    <template #left>
-      <AppFooterLeft />
+    <template
+      v-if="footer && footer.left"
+      #left
+    >
+      <AppFooterLeft
+        :parts="footer.left"
+      />
     </template>
     <template
       v-if="footer && footer.sections && footer.sections.length"
@@ -19,8 +24,11 @@ const { data: footer } = await useSiteFooter()
         />
       </UContainer>
     </template>
-    <template #right>
-      <AppFooterRight :links="footer && footer.socials" />
+    <template
+      v-if="footer && footer.right"
+      #right
+    >
+      <AppFooterRight :links="footer && footer.right" />
     </template>
   </UFooter>
 </template>

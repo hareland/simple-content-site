@@ -1,3 +1,6 @@
+left:
+  - Copyright © {fullYear}
+
 sections:
   - label: Links
     children:
@@ -18,8 +21,9 @@ sections:
       - label: Privacy Policy
         href: https://discord.gg/slidev
 
+
 right:
-  - icon: i-simple-icons-github
+  - label: Discord
     size: sm
-    variant: ghost
+    variant: link
     color: neutral

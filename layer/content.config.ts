@@ -76,7 +76,10 @@ const createFooterSchema = () => z.object({
     label: z.string().nonempty(),
     children: z.array(createLinkSchema()),
   })),
+  left: z.array(z.string()).optional(),
+  // @deprecated Replaced by 'right'
   socials: z.array(createLinkSchema()),
+  right: z.array(createLinkSchema()),
 })
 
 let collections: Record<string, DefinedCollection>

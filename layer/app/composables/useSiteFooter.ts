@@ -16,7 +16,7 @@ export const useSiteFooter = () => {
         }
       }
       return <FooterCollectionItem> {
-        socials: [] as FooterCollectionItem['socials'],
+        right: [] as FooterCollectionItem['right'],
       }
     }
 
