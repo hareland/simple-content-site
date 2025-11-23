@@ -9,7 +9,7 @@ const props = withDefaults(defineProps<{
 
 })
 
-const replaceParams = (text: string, params: Record<string, string>) => text.replace(/\{([^}]+)\}/g, (_, key) => params[key])
+const replaceParams = (text: string, params: Record<string, string>) => text.replace(/\{([^}]+)\}/g, (_, key) => params[key] || '')
 
 const rawItems = computed(() => {
   if (!props.parts || props.parts.length === 0) return ['']
