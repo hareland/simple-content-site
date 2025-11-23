@@ -18,7 +18,7 @@ sections:
       - label: Privacy Policy
         href: https://discord.gg/slidev
 
-socials:
+right:
   - icon: i-simple-icons-github
     size: sm
     variant: ghost
