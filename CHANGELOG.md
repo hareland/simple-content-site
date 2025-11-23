@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.1.0](https://github.com/hareland/simple-content-site/compare/v1.0.9...v1.1.0) (2025-11-23)
+
+### Features
+
+* add `footer.yml` to define configurable footer structure for minimal playground ([4ed6f82](https://github.com/hareland/simple-content-site/commit/4ed6f82abd6efde243924a6288724be984c10d0e))
+* add pricing page with structured plans and SEO enhancements in minimal playground ([5def9a9](https://github.com/hareland/simple-content-site/commit/5def9a915c2dbf6ab984eabf20409ac124492d35))
+* enhance `AppFooter` with props for configurable sections and layout adjustments ([b8ede4e](https://github.com/hareland/simple-content-site/commit/b8ede4e144b95b774834280f9989d3e8f248e4f1))
+* enhance `AppFooterLeft` with dynamic `parts` and `replacements` props for flexible text rendering ([195d88c](https://github.com/hareland/simple-content-site/commit/195d88c2e16556eb9829c7bb547b1fd074082361))
+* make `AppFooter` more flexible by adding support for dynamic `left` and `right` props ([d5675f6](https://github.com/hareland/simple-content-site/commit/d5675f69ffd482beec3607fe2126731f9cadbb8c))
+
+### Bug Fixes
+
+* add conditional rendering for `left` and `right` slots in `AppFooter` to prevent errors with missing data ([de5c3a8](https://github.com/hareland/simple-content-site/commit/de5c3a83dcf07c34b703e650ad928686a9d15c46))
+* ensure `replaceParams` returns empty string for missing keys in `AppFooterLeft` ([1b283e1](https://github.com/hareland/simple-content-site/commit/1b283e124682158e2c76784e285cf323bc25a791))
+
 ## [1.0.9](https://github.com/hareland/simple-content-site/compare/v1.0.8...v1.0.9) (2025-11-10)
 
 ### Features
