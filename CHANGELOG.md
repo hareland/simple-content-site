@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.1](https://github.com/hareland/simple-content-site/compare/v1.1.0...v1.1.1) (2025-11-24)
+
+### Features
+
+* add `AppHeader` component to minimal playground with dynamic slots and i18n support ([90a895e](https://github.com/hareland/simple-content-site/commit/90a895e92621e7783baa08329be11ae2ced81f4d))
+
 ## [1.1.0](https://github.com/hareland/simple-content-site/compare/v1.0.9...v1.1.0) (2025-11-23)
 
 ### Features
