@@ -1,4 +1,4 @@
-# nuxt-content-site layer
+# simple-content-site layer
 
 A simple layer for setting up a simple website using Nuxt, Nuxt UI and Nuxt Content.
 
@@ -22,7 +22,7 @@ pnpm run dev
 
 This is a monorepo containing:
 
-- [**`/layer`**](./layer) - Content Site Nuxt layer (`nuxt-content-site`)
+- [**`/layer`**](./layer) - Content Site Nuxt layer (`simple-content-site`)
 - [**`/playground/minimal`**](./playground/minimal) - Minimal example project.
 - [**`/playground/i18n`**](./playground/i18n) - I18n example project
 
