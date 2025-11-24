@@ -1,5 +1,5 @@
 left:
-  - Copyright © {fullYear}
+  - 'Copyright © [{fullYear}]{.text-primary}'
 
 sections:
   - label: Links
