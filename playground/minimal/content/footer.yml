@@ -24,6 +24,6 @@ sections:
 
 right:
   - label: Discord
-    size: sm
     variant: link
     color: neutral
+    to: https://discord.gg/slidev
