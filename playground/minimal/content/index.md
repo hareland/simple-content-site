@@ -13,7 +13,7 @@ Make [simple]{.text-primary} websites :br  with _Markdown\__
 #description
 Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box.
 
-`nuxt-content-site` brings the best of the Nuxt ecosystem into one package.
+`simple-content-site` brings the best of the Nuxt ecosystem into one package.
 
 #links
 :::u-button
@@ -31,7 +31,7 @@ Get started
 color: neutral
 icon: simple-icons-github
 size: xl
-to: https://github.com/hareland/nuxt-content-site
+to: https://github.com/hareland/simple-content-site
 variant: outline
 ---
 Star on GitHub

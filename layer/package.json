@@ -6,7 +6,7 @@
   "main": "./nuxt.config.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hareland/nuxt-content-site-layer.git"
+    "url": "git+https://github.com/hareland/simple-content-site-layer.git"
   },
   "private": false,
   "license": "MIT",
