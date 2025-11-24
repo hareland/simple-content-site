@@ -26,6 +26,9 @@ const text = computed(() => {
 
 <template>
   <div class="text-sm text-muted">
-    <MDC :value="text" />
+    <MDC
+      :value="text"
+      unwrap="p"
+    />
   </div>
 </template>
