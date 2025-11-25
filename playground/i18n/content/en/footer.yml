@@ -1,3 +1,5 @@
+left:
+  - 'Copyright &copy; [{fullYear}]{.text-primary}'
 sections:
   - label: Links
     children:
