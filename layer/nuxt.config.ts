@@ -22,7 +22,7 @@ export default defineNuxtConfig({
           .map((id) => {
             return id
               .replace(/^@nuxt\/content > /, 'simple-content-site > @nuxt/content > ')
-              .replace(/^nuxt-studio > /, 'simple-content-site > nuxt-studio')
+              .replace(/^nuxt-studio > /, 'simple-content-site > nuxt-studio > ')
           },
           )
       })
