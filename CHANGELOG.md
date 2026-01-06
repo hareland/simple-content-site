@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.0](https://github.com/hareland/simple-content-site/compare/v1.3.1...v2.0.0) (2026-01-06)
+
+### Features
+
+* stable nuxt studio ([1cf3a5d](https://github.com/hareland/simple-content-site/commit/1cf3a5df69f883f4457baa650a1c605193eebdec))
+* stable nuxt studio ([f011369](https://github.com/hareland/simple-content-site/commit/f011369fad9a81deec6e10daf166ec8e297afbcf))
+
 ## [1.3.1](https://github.com/hareland/simple-content-site/compare/v1.3.0...v1.3.1) (2025-12-10)
 
 ## [1.3.0](https://github.com/hareland/simple-content-site/compare/v1.2.0...v1.3.0) (2025-12-10)
