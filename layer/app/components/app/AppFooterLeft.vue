@@ -3,24 +3,33 @@ import { defu } from 'defu'
 
 const props = withDefaults(defineProps<{
   parts?: string[]
-  replacements?: Record<string, string>
+  replacements?: Record<string, string | number>
 }>(), {
   parts: () => ['Copyright ©', '{fullYear}'],
-
 })
 
-const replaceParams = (text: string, params: Record<string, string>) => text.replace(/\{([^}]+)\}/g, (_, key) => params[key] || '')
+const replaceParams = (
+  text: string,
+  params: Record<string, string | number>,
+) =>
+  text.replace(/\{([^}]+)\}/g, (_, key) =>
+    params[key] != null ? String(params[key]) : '',
+  )
 
 const rawItems = computed(() => {
   if (!props.parts || props.parts.length === 0) return ['']
-
   return props.parts
 })
 
 const text = computed(() => {
-  return replaceParams([...toValue(rawItems)].join(' '), defu(props.replacements || {}, {
-    fullYear: new Date().getFullYear(),
-  }))
+  const joined = [...toValue(rawItems)].join(' ')
+
+  return replaceParams(
+    joined,
+    defu(props.replacements ?? {}, {
+      fullYear: new Date().getFullYear(),
+    }),
+  )
 })
 </script>
 
