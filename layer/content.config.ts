@@ -84,10 +84,10 @@ const createFooterSchema = () => z.object({
 
 let collections: Record<string, DefinedCollection>
 
-if (locales && Array.isArray(locales)) {
+const buildI18nCollections = () => {
   collections = {}
   for (const locale of locales) {
-    const code = typeof locale === 'string' ? locale : locale.code
+    const code = (typeof locale === 'string' ? locale : locale.code).replace('-', '_')
 
     collections[`landing_${code}`] = defineCollection({
       type: 'page',
@@ -133,7 +133,8 @@ if (locales && Array.isArray(locales)) {
     })
   }
 }
-else {
+
+const buildDefaultCollections = () => {
   collections = {
     landing: defineCollection({
       type: 'page',
@@ -172,6 +173,16 @@ else {
       schema: createFooterSchema(),
     }),
   }
+}
+
+if (locales && Array.isArray(locales)) {
+  if (locales.length === 0) {
+    console.warn('Site: There are 0 locales, building with defaults instead.')
+  }
+  buildI18nCollections()
+}
+else {
+  buildDefaultCollections()
 }
 
 export default defineContentConfig({ collections })
