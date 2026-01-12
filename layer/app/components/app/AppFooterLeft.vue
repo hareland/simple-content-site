@@ -11,6 +11,8 @@ const props = withDefaults(defineProps<{
   parts: () => ['Copyright ©', '{fullYear}'],
 })
 
+const currentUrl = useRequestURL()
+
 // todo: move this logic to a shared space
 const allReplacements = computed<ReplaceItem[]>(() => [
   {
@@ -19,7 +21,7 @@ const allReplacements = computed<ReplaceItem[]>(() => [
   },
   {
     match: '{url}',
-    replace: () => useRequestURL().toString(),
+    replace: () => currentUrl.toString(),
   },
   ...(props.replacements ?? []),
 ])
