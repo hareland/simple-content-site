@@ -3,12 +3,28 @@
 A simple layer for setting up a simple website using Nuxt, Nuxt UI and Nuxt Content.
 
 ## Installation
+> You can add the layer to an existing project, or create a fresh one following the methods below.
 
+### Create a new project
+
+Minimal version
+
+```bash
+npx nuxi init -t gh:hareland/simple-content-site/playground/minimal
+```
+
+I18n version
+```bash
+npx nuxi init -t gh:hareland/simple-content-site/playground/i18n
+```
+
+### Add to existing nuxt app
 > This should be done inside a nuxt app.
 
 ```bash
 npm i simple-content-site
 ```
+or
 
 ```bash
 pnpm add simple-content-site
