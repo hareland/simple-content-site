@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0](https://github.com/hareland/simple-content-site/compare/v2.0.1...v2.1.0) (2026-01-12)
+
+### Features
+
+* Add .env.example to starter ([c4fff84](https://github.com/hareland/simple-content-site/commit/c4fff849650c500405afcf7a1d3de1ee6f8415c0))
+* Add commands to create new project to README.md ([5f7cd15](https://github.com/hareland/simple-content-site/commit/5f7cd15929ab9e52c2cb72bbd2eab4ce71dae4f8))
+* make footer replacements better ([918e9f9](https://github.com/hareland/simple-content-site/commit/918e9f9542d4a13c1c0c6c5d06b4baace71814c5))
+* make footer replacements better ([cb1d511](https://github.com/hareland/simple-content-site/commit/cb1d51181624ec0a5b4fe715725d9907b2a5341a))
+
+### Bug Fixes
+
+* useRequestURL should be called as a top-level item in script setup. ([afdd408](https://github.com/hareland/simple-content-site/commit/afdd40867c66ba22652ae37aed727f630bc4c8d4))
+
 ## [2.0.1](https://github.com/hareland/simple-content-site/compare/v2.0.0...v2.0.1) (2026-01-06)
 
 ## [2.0.0](https://github.com/hareland/simple-content-site/compare/v1.3.1...v2.0.0) (2026-01-06)
