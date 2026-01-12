@@ -1,6 +1,10 @@
 left:
-  - 'Copyright © [{fullYear}]{.text-primary}'
-
+  - Copyright © [{fullYear}]{.text-primary}
+right:
+  - label: Discord
+    variant: link
+    color: neutral
+    to: https://discord.gg/slidev
 sections:
   - label: Links
     children:
@@ -20,10 +24,4 @@ sections:
         href: https://github.com/slidevjs/slidev
       - label: Privacy Policy
         href: https://discord.gg/slidev
-
-
-right:
-  - label: Discord
-    variant: link
-    color: neutral
-    to: https://discord.gg/slidev
+socials: []
