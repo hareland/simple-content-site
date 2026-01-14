@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.1](https://github.com/hareland/simple-content-site/compare/v2.1.0...v2.1.1) (2026-01-14)
+
+### Features
+
+* normalize collection name ([4f3fa7c](https://github.com/hareland/simple-content-site/commit/4f3fa7c70dc0f352520c80dea5fad1fe7743dbd4))
+
 ## [2.1.0](https://github.com/hareland/simple-content-site/compare/v2.0.1...v2.1.0) (2026-01-12)
 
 ### Features
