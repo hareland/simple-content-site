@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0](https://github.com/hareland/simple-content-site/compare/v2.1.1...v2.2.0) (2026-01-14)
+
+### Features
+
+* enhance composable imports and prevent duplicate landing page injection ([5e35418](https://github.com/hareland/simple-content-site/commit/5e35418282f18133932b75e80aabea9bcd1c514f))
+
 ## [2.1.1](https://github.com/hareland/simple-content-site/compare/v2.1.0...v2.1.1) (2026-01-14)
 
 ### Features
