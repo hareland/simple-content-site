@@ -1,5 +1,5 @@
 import type { Collections, HeaderCollectionItem } from '@nuxt/content'
-import { useSiteI18n } from './useSiteI18n'
+import { useSiteI18n } from '#imports'
 
 export const useSiteHeader = () => {
   const config = useAppConfig()

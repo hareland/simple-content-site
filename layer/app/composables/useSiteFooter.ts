@@ -1,5 +1,5 @@
 import type { Collections, FooterCollectionItem } from '@nuxt/content'
-import { useSiteI18n } from './useSiteI18n'
+import { useSiteI18n } from '#imports'
 
 export const useSiteFooter = () => {
   const { locale, isEnabled, defaultLocale } = useSiteI18n()
