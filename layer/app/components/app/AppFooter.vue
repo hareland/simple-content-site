@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSiteFooter } from '../../composables/useSiteFooter'
+import { useSiteFooter } from '#imports'
 
 const { data: footer } = await useSiteFooter()
 </script>
