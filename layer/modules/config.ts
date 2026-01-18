@@ -14,7 +14,6 @@ export default defineNuxtModule({
     const url = inferSiteURL()
     const meta = await getPackageJsonMetadata(dir)
     const gitInfo = await getLocalGitInfo(dir) || getGitEnv()
-    const { resolve: resolveRoot } = createResolver(dir)
     const siteName = nuxt.options?.site?.name || meta.name || gitInfo?.name || ''
 
     // nuxt.options.llms = defu(nuxt.options.llms, {
@@ -55,6 +54,7 @@ export default defineNuxtModule({
         */
     if (nuxt.options.i18n && nuxt.options.i18n.locales) {
       const { resolve } = createResolver(import.meta.url)
+      const { resolve: resolveRoot } = createResolver(dir)
 
       // Filter locales to only include existing ones
       const filteredLocales = nuxt.options.i18n.locales.filter((locale) => {
