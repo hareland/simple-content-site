@@ -44,10 +44,6 @@ See How [i18n](./i18n) works.
 #title
 Shipped with many cool things
 
-
-
-
-
 #features
   :::u-page-feature
   ---
