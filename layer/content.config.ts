@@ -5,6 +5,7 @@ import { joinURL } from 'ufo'
 
 const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
+// @ts-expect-error cannot be typed?
 const locales = options.i18n?.locales
 
 const variantEnum = z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link'])
