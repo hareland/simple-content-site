@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.2.1](https://github.com/hareland/simple-content-site/compare/v2.2.0...v2.2.1) (2026-01-18)
+
+### Features
+
+* add minimal and i18n starters with content structure, Nuxt configurations, and example files ([cd26f06](https://github.com/hareland/simple-content-site/commit/cd26f0657265fb59e36e24832a8189882efbe8a1))
+
+### Bug Fixes
+
+* fetch search files when locale changes. ([168e59e](https://github.com/hareland/simple-content-site/commit/168e59ee14d682b3e345d09a9901ec91ba9d767d))
+* **i18n:** return key as fallback when translation is missing ([4c8d518](https://github.com/hareland/simple-content-site/commit/4c8d518c71ed79aee5773e46f531b8af5a95fc65))
+
 ## [2.2.0](https://github.com/hareland/simple-content-site/compare/v2.1.1...v2.2.0) (2026-01-14)
 
 ### Features
