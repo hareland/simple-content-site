@@ -82,7 +82,7 @@ export default defineNuxtModule({
       // Override strategy to prefix
       nuxt.options.i18n = defu(nuxt.options.i18n, {
         strategy: 'prefix_except_default',
-      })
+      }) as typeof nuxt.options.i18n
 
       // Expose filtered locales
       nuxt.options.runtimeConfig.public.Site = {
