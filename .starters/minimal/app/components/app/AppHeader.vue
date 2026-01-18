@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSiteHeader, useSiteI18n } from '#imports'
+import { useSiteI18n, useSiteHeader } from '#imports'
 
 const { data: header } = await useSiteHeader()
 

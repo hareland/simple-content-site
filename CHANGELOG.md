@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.2.2](https://github.com/hareland/simple-content-site/compare/v2.2.1...v2.2.2) (2026-01-18)
+
+### Features
+
+* **i18n:** add example i18n setup with test translation and content integration ([9fe7ef0](https://github.com/hareland/simple-content-site/commit/9fe7ef09b189b6f58f7247838b7d1436b8bd84ae))
+
+### Bug Fixes
+
+* **config:** move `resolveRoot` creation to i18n-specific block ([57a9217](https://github.com/hareland/simple-content-site/commit/57a921762fa50dc2266693df3052912bdb35c9f3))
+* **i18n:** refine locale strategy and support custom translations ([effd067](https://github.com/hareland/simple-content-site/commit/effd067d8d965da5cc8392b38f5f936c9c2a3953))
+* **types:** cast i18n config to resolve TypeScript error ([f98c85c](https://github.com/hareland/simple-content-site/commit/f98c85c080983b9527eb373360830b846c0285c4))
+
+## [2.2.1](https://github.com/hareland/simple-content-site/compare/v2.2.0...v2.2.1) (2026-01-18)
+
+### Features
+
+* add minimal and i18n starters with content structure, Nuxt configurations, and example files ([cd26f06](https://github.com/hareland/simple-content-site/commit/cd26f0657265fb59e36e24832a8189882efbe8a1))
+
+### Bug Fixes
+
+* fetch search files when locale changes. ([168e59e](https://github.com/hareland/simple-content-site/commit/168e59ee14d682b3e345d09a9901ec91ba9d767d))
+* **i18n:** return key as fallback when translation is missing ([4c8d518](https://github.com/hareland/simple-content-site/commit/4c8d518c71ed79aee5773e46f531b8af5a95fc65))
+
+## [2.2.0](https://github.com/hareland/simple-content-site/compare/v2.1.1...v2.2.0) (2026-01-14)
+
+### Features
+
+* enhance composable imports and prevent duplicate landing page injection ([5e35418](https://github.com/hareland/simple-content-site/commit/5e35418282f18133932b75e80aabea9bcd1c514f))
+
+## [2.1.1](https://github.com/hareland/simple-content-site/compare/v2.1.0...v2.1.1) (2026-01-14)
+
+### Features
+
+* normalize collection name ([4f3fa7c](https://github.com/hareland/simple-content-site/commit/4f3fa7c70dc0f352520c80dea5fad1fe7743dbd4))
+
 ## [2.1.0](https://github.com/hareland/simple-content-site/compare/v2.0.1...v2.1.0) (2026-01-12)
 
 ### Features

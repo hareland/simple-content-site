@@ -15,8 +15,6 @@ Ship fast, flexible, and SEO-optimized documentation with beautiful design out o
 
 `simple-content-site` brings the best of the Nuxt ecosystem into one package.
 
-See How [i18n](./i18n) works.
-
 #links
   :::u-button
   ---
@@ -43,6 +41,10 @@ See How [i18n](./i18n) works.
 ::u-page-section
 #title
 Shipped with many cool things
+
+
+
+
 
 #features
   :::u-page-feature

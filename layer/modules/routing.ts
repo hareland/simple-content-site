@@ -11,12 +11,18 @@ export default defineNuxtModule({
 
     // Ensure useSiteI18n is available in the app
     nuxt.hook('imports:extend', (imports) => {
-      if (imports.some(i => i.name === 'useSiteI18n')) return
+      const loadComposableIfNotFound = (composableName: string) => {
+        if (imports.some(i => i.name === composableName)) return
 
-      imports.push({
-        name: 'useSiteI18n',
-        from: resolve('../app/composables/useSiteI18n'),
-      })
+        imports.push({
+          name: composableName,
+          from: resolve(`../app/composables/${composableName}`),
+        })
+      }
+
+      loadComposableIfNotFound('useSiteI18n')
+      loadComposableIfNotFound('useSiteHeader')
+      loadComposableIfNotFound('useSiteFooter')
     })
 
     // might want to know about this stuff.
@@ -27,6 +33,10 @@ export default defineNuxtModule({
     extendPages((pages) => {
       const landingTemplate = resolve('../app/templates/landing.vue')
 
+      if (pages.some(p => p.name === (isI18nEnabled ? 'lang-index' : 'index'))) {
+        if (import.meta.dev) console.warn('[Site] Duplicate landing page detected - skipping')
+        return
+      }
       if (isI18nEnabled) {
         pages.push({
           name: 'lang-index',

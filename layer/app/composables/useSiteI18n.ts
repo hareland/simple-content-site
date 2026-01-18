@@ -15,7 +15,7 @@ export const useSiteI18n = () => {
       switchLocalePath: () => {},
       t: (key: string): string => {
         const path = key.split('.')
-        return path.reduce((acc: unknown, curr) => (acc as Record<string, unknown>)?.[curr], en) as string
+        return path.reduce((acc: unknown, curr) => (acc as Record<string, unknown>)?.[curr], en) as string || key as string
       },
     }
   }
