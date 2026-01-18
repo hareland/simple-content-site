@@ -50,10 +50,11 @@ export default defineNuxtModule({
     })
 
     /*
-    ** I18N
-    */
+        ** I18N
+        */
     if (nuxt.options.i18n && nuxt.options.i18n.locales) {
       const { resolve } = createResolver(import.meta.url)
+      const { resolve: resolveRoot } = createResolver(dir)
 
       // Filter locales to only include existing ones
       const filteredLocales = nuxt.options.i18n.locales.filter((locale) => {
@@ -79,10 +80,9 @@ export default defineNuxtModule({
       })
 
       // Override strategy to prefix
-      nuxt.options.i18n = {
-        ...nuxt.options.i18n,
-        strategy: 'prefix',
-      }
+      nuxt.options.i18n = defu(nuxt.options.i18n, {
+        strategy: 'prefix_except_default',
+      }) as typeof nuxt.options.i18n
 
       // Expose filtered locales
       nuxt.options.runtimeConfig.public.Site = {
@@ -93,16 +93,21 @@ export default defineNuxtModule({
         const langDir = resolve('../i18n/locales')
 
         const locales = filteredLocales?.map((locale) => {
+          // Possibly load custom translations.
+          const localeCode = typeof locale === 'string' ? locale : locale.code
+          const customLocalePath = resolveRoot('i18n/locales', `${localeCode}.json`)
+          const hasCustomLocale = existsSync(customLocalePath)
+          const files = hasCustomLocale ? [customLocalePath, `${localeCode}.json`] : [`${localeCode}.json`]
           return typeof locale === 'string'
             ? {
                 code: locale,
                 name: locale,
-                file: `${locale}.json`,
+                files,
               }
             : {
                 code: locale.code,
                 name: locale.name || locale.code,
-                file: `${locale.code}.json`,
+                files,
               }
         })
 
