@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.2.2](https://github.com/hareland/simple-content-site/compare/v2.2.1...v2.2.2) (2026-01-18)
+
+### Features
+
+* **i18n:** add example i18n setup with test translation and content integration ([9fe7ef0](https://github.com/hareland/simple-content-site/commit/9fe7ef09b189b6f58f7247838b7d1436b8bd84ae))
+
+### Bug Fixes
+
+* **config:** move `resolveRoot` creation to i18n-specific block ([57a9217](https://github.com/hareland/simple-content-site/commit/57a921762fa50dc2266693df3052912bdb35c9f3))
+* **i18n:** refine locale strategy and support custom translations ([effd067](https://github.com/hareland/simple-content-site/commit/effd067d8d965da5cc8392b38f5f936c9c2a3953))
+* **types:** cast i18n config to resolve TypeScript error ([f98c85c](https://github.com/hareland/simple-content-site/commit/f98c85c080983b9527eb373360830b846c0285c4))
+
 ## [2.2.1](https://github.com/hareland/simple-content-site/compare/v2.2.0...v2.2.1) (2026-01-18)
 
 ### Features
