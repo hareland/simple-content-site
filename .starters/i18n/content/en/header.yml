@@ -1,0 +1,8 @@
+title: Playground
+navigation:
+  - label: Home
+    to: /
+  - label: Pricing
+    to: /pricing
+  - label: About
+    to: /about

@@ -10,12 +10,12 @@ A simple layer for setting up a simple website using Nuxt, Nuxt UI and Nuxt Cont
 Minimal version
 
 ```bash
-npx nuxi init -t gh:hareland/simple-content-site/playground/minimal
+npx nuxi init -t gh:hareland/simple-content-site/.starters/minimal
 ```
 
 I18n version
 ```bash
-npx nuxi init -t gh:hareland/simple-content-site/playground/i18n
+npx nuxi init -t gh:hareland/simple-content-site/.starters/i18n
 ```
 
 ### Add to existing nuxt app
