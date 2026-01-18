@@ -93,6 +93,13 @@ export default defineNuxtSchema({
           icon: 'i-lucide-type',
           default: '',
         }),
+        titleTemplate: field({
+          type: 'string',
+          title: 'Title Template',
+          description: 'The Title template',
+          icon: 'i-lucide-type',
+          default: undefined,
+        }),
         description: field({
           type: 'string',
           title: 'Description',

@@ -1,13 +1,18 @@
 <script setup lang="ts">
-import { useSiteFooter } from '../../composables/useSiteFooter'
+import { useSiteFooter } from '#imports'
 
 const { data: footer } = await useSiteFooter()
 </script>
 
 <template>
   <UFooter>
-    <template #left>
-      <AppFooterLeft />
+    <template
+      v-if="footer && footer.left"
+      #left
+    >
+      <AppFooterLeft
+        :parts="footer.left"
+      />
     </template>
     <template
       v-if="footer && footer.sections && footer.sections.length"
@@ -19,8 +24,11 @@ const { data: footer } = await useSiteFooter()
         />
       </UContainer>
     </template>
-    <template #right>
-      <AppFooterRight :links="footer && footer.socials" />
+    <template
+      v-if="footer && footer.right"
+      #right
+    >
+      <AppFooterRight :links="footer && footer.right" />
     </template>
   </UFooter>
 </template>

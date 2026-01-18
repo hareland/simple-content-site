@@ -1,0 +1,27 @@
+left:
+  - Copyright © [{fullYear}]{.text-primary}
+right:
+  - label: Discord
+    variant: link
+    color: neutral
+    to: https://discord.gg/slidev
+sections:
+  - label: Links
+    children:
+      - label: Pricing
+        to: /pricing
+      - label: Features
+        to: /features
+  - label: Features
+    children:
+      - label: Simple
+        href: https://github.com/slidevjs/slidev
+      - label: Discord
+        href: https://discord.gg/slidev
+  - label: Legal
+    children:
+      - label: Terms of Service
+        href: https://github.com/slidevjs/slidev
+      - label: Privacy Policy
+        href: https://discord.gg/slidev
+socials: []
