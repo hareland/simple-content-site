@@ -14,6 +14,7 @@ export default defineNuxtModule({
     const url = inferSiteURL()
     const meta = await getPackageJsonMetadata(dir)
     const gitInfo = await getLocalGitInfo(dir) || getGitEnv()
+    const { resolve: resolveRoot } = createResolver(dir)
     const siteName = nuxt.options?.site?.name || meta.name || gitInfo?.name || ''
 
     // nuxt.options.llms = defu(nuxt.options.llms, {
@@ -50,8 +51,8 @@ export default defineNuxtModule({
     })
 
     /*
-    ** I18N
-    */
+        ** I18N
+        */
     if (nuxt.options.i18n && nuxt.options.i18n.locales) {
       const { resolve } = createResolver(import.meta.url)
 
@@ -79,10 +80,9 @@ export default defineNuxtModule({
       })
 
       // Override strategy to prefix
-      nuxt.options.i18n = {
-        ...nuxt.options.i18n,
-        strategy: 'prefix',
-      }
+      nuxt.options.i18n = defu(nuxt.options.i18n, {
+        strategy: 'prefix_except_default',
+      })
 
       // Expose filtered locales
       nuxt.options.runtimeConfig.public.Site = {
@@ -93,16 +93,21 @@ export default defineNuxtModule({
         const langDir = resolve('../i18n/locales')
 
         const locales = filteredLocales?.map((locale) => {
+          // Possibly load custom translations.
+          const localeCode = typeof locale === 'string' ? locale : locale.code
+          const customLocalePath = resolveRoot('i18n/locales', `${localeCode}.json`)
+          const hasCustomLocale = existsSync(customLocalePath)
+          const files = hasCustomLocale ? [customLocalePath, `${localeCode}.json`] : [`${localeCode}.json`]
           return typeof locale === 'string'
             ? {
                 code: locale,
                 name: locale,
-                file: `${locale}.json`,
+                files,
               }
             : {
                 code: locale.code,
                 name: locale.name || locale.code,
-                file: `${locale.code}.json`,
+                files,
               }
         })
 
