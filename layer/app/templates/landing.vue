@@ -13,8 +13,12 @@ const { data: page } = await useAsyncData(collectionName.value, () => {
   // TODO: Move to useSitePage composable in the future
   let path = route.path
   // we need to inject a virtual path to find the page in the collection
-  if (strategy.value === 'prefix_except_default' && locale.value === defaultLocale.value && !path.startsWith(`/${locale.value}`)) {
-    path = `/${locale.value}${path}`
+  if (strategy.value === 'prefix_except_default' && locale.value === defaultLocale.value) {
+    const prefix = `/${locale.value}`
+    if (path !== prefix && !path.startsWith(`${prefix}/`)) {
+      // we need to inject a virtual path to find the page in the collection
+      path = `${prefix}${path}`
+    }
   }
   return queryCollection(collection).path(path).first()
 })
