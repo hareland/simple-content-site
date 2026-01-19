@@ -79,10 +79,18 @@ export default defineNuxtModule({
         return hasLocaleFile && hasContentFolder
       })
 
-      // Override strategy to prefix
+      //
       nuxt.options.i18n = defu(nuxt.options.i18n, {
         strategy: 'prefix_except_default',
       }) as typeof nuxt.options.i18n
+
+      // todo: exposing the strategy like this might cause issues in the future.
+      //  So it will be better to expose the i18n redirect plugin instead from a module.
+      nuxt.options.runtimeConfig.public.i18n = defu(nuxt.options.runtimeConfig.public.i18n, {
+        strategy: nuxt.options.i18n.strategy,
+      })
+
+      console.log('[I18N Module]', { i18n: nuxt.options.i18n })
 
       // Expose filtered locales
       nuxt.options.runtimeConfig.public.Site = {
