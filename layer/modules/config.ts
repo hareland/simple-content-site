@@ -1,9 +1,10 @@
-import { createResolver, defineNuxtModule } from '@nuxt/kit'
+import { createResolver, defineNuxtModule, addRouteMiddleware, addPlugin } from '@nuxt/kit'
 import { defu } from 'defu'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { inferSiteURL, getPackageJsonMetadata } from '../utils/meta'
 import { getGitBranch, getGitEnv, getLocalGitInfo } from '../utils/git'
+import type { NuxtMiddleware } from '@nuxt/schema'
 
 export default defineNuxtModule({
   meta: {
@@ -93,6 +94,15 @@ export default defineNuxtModule({
       // Expose filtered locales
       nuxt.options.runtimeConfig.public.Site = {
         filteredLocales,
+      }
+
+      // ensure we redirect from index if the strategy requires.
+      if (nuxt.options.i18n.strategy && !['prefix_except_default', 'no_prefix'].includes(nuxt.options.i18n.strategy)) {
+        console.log(`[I18n] Adding redirect plugin for root since strategy is: ${nuxt.options.i18n.strategy}`)
+        addPlugin({
+          src: resolve('../runtime/plugins/i18n-redirect'),
+          mode: 'client',
+        })
       }
 
       nuxt.hook('i18n:registerModule', (register) => {
