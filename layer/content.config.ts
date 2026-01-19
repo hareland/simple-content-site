@@ -90,14 +90,6 @@ const buildI18nCollections = () => {
   for (const locale of locales) {
     const code = (typeof locale === 'string' ? locale : locale.code).replace('-', '_')
 
-    collections[`landing_${code}`] = defineCollection({
-      type: 'page',
-      source: {
-        cwd,
-        include: `${code}/index.md`,
-      },
-    })
-
     collections[`pages_${code}`] = defineCollection({
       type: 'page',
       source: {
@@ -105,7 +97,6 @@ const buildI18nCollections = () => {
         include: `${code}/**/*`,
         prefix: `/${code}`,
         exclude: [
-          `${code}/index.md`,
           `${code}/header.yml`,
           `${code}/footer.yml`,
         ],
@@ -137,20 +128,12 @@ const buildI18nCollections = () => {
 
 const buildDefaultCollections = () => {
   collections = {
-    landing: defineCollection({
-      type: 'page',
-      source: {
-        cwd,
-        include: 'index.md',
-      },
-    }),
     pages: defineCollection({
       type: 'page',
       source: {
         cwd,
         include: '**',
         exclude: [
-          'index.md',
           'header.yml',
           'footer.yml',
         ],
@@ -177,10 +160,13 @@ const buildDefaultCollections = () => {
 }
 
 if (locales && Array.isArray(locales)) {
-  if (locales.length === 0) {
-    console.warn('Site: There are 0 locales, building with defaults instead.')
+  if (locales.length > 0) {
+    buildI18nCollections()
   }
-  buildI18nCollections()
+  else {
+    console.warn('Site: There are 0 locales, building with defaults instead.')
+    buildDefaultCollections()
+  }
 }
 else {
   buildDefaultCollections()
