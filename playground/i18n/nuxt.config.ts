@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/i18n', 'nuxt-studio'],
+  modules: ['nuxt-studio'],
   i18n: {
+    strategy: 'prefix_except_default',
     defaultLocale: 'en',
     locales: [{
       code: 'en',

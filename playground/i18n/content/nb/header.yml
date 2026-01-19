@@ -1,0 +1,8 @@
+title: Playground
+navigation:
+  - label: Hjem
+    to: /nb
+  - label: Priser
+    to: /nb/pricing
+  - label: Om
+    to: /nb/about

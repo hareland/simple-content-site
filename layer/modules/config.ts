@@ -1,4 +1,4 @@
-import { createResolver, defineNuxtModule } from '@nuxt/kit'
+import { createResolver, defineNuxtModule, addPlugin } from '@nuxt/kit'
 import { defu } from 'defu'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
@@ -79,14 +79,29 @@ export default defineNuxtModule({
         return hasLocaleFile && hasContentFolder
       })
 
-      // Override strategy to prefix
+      //
       nuxt.options.i18n = defu(nuxt.options.i18n, {
         strategy: 'prefix_except_default',
       }) as typeof nuxt.options.i18n
 
+      // todo: exposing the strategy like this might cause issues in the future.
+      //  So it will be better to expose the i18n redirect plugin instead from a module.
+      nuxt.options.runtimeConfig.public.i18n = defu(nuxt.options.runtimeConfig.public.i18n, {
+        strategy: nuxt.options.i18n.strategy,
+      })
+
       // Expose filtered locales
       nuxt.options.runtimeConfig.public.Site = {
         filteredLocales,
+      }
+
+      // ensure we redirect from index if the strategy requires.
+      if (nuxt.options.i18n.strategy && !['prefix_except_default', 'no_prefix'].includes(nuxt.options.i18n.strategy)) {
+        console.log(`[I18n] Adding redirect plugin for root since strategy is: ${nuxt.options.i18n.strategy}`)
+        addPlugin({
+          src: resolve('../runtime/plugins/i18n-redirect'),
+          mode: 'client',
+        })
       }
 
       nuxt.hook('i18n:registerModule', (register) => {

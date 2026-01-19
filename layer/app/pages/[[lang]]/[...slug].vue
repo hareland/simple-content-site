@@ -9,7 +9,7 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { locale, isEnabled, defaultLocale } = useSiteI18n()
+const { locale, isEnabled, defaultLocale, strategy } = useSiteI18n()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
 const collectionName = computed(() => {
@@ -20,7 +20,19 @@ const collectionName = computed(() => {
 })
 
 const [{ data: page }] = await Promise.all([
-  useAsyncData(kebabCase(route.path), () => queryCollection(collectionName.value as keyof Collections).path(route.path).first() as Promise<PagesCollectionItem>),
+  useAsyncData(kebabCase(route.path), () => {
+    // TODO: Move to useSitePage composable in the future
+    let path = route.path
+
+    if (strategy.value === 'prefix_except_default' && locale.value === defaultLocale.value) {
+      const prefix = `/${locale.value}`
+      if (path !== prefix && !path.startsWith(`${prefix}/`)) {
+        // we need to inject a virtual path to find the page in the collection
+        path = `${prefix}${path}`
+      }
+    }
+    return queryCollection(collectionName.value as keyof Collections).path(path).first() as Promise<PagesCollectionItem>
+  }),
 ])
 
 if (!page.value) {
