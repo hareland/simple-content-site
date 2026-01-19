@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.3.0](https://github.com/hareland/simple-content-site/compare/v2.2.2...v2.3.0) (2026-01-19)
+
+### Features
+
+* merge landing and pages collections into pages for less complexity ([193da66](https://github.com/hareland/simple-content-site/commit/193da661cbe8726d3a057e8d612719034c35745b))
+* refactor `useSitePage` composable to enhance flexibility and streamline page retrieval logic ([a41bf3a](https://github.com/hareland/simple-content-site/commit/a41bf3ab8623ace8919003cc13226f7b601b54e0))
+* useSitePage composable ([3398028](https://github.com/hareland/simple-content-site/commit/339802851f134928a3d9efdcbdcdfbe9ffa4b7cb))
+
+### Bug Fixes
+
+* **i18n:** add `strategy` ref to composable with caution note ([63375f2](https://github.com/hareland/simple-content-site/commit/63375f2b74c182e2ad8d0de6f25bc8dda7e8abc0))
+* **i18n:** add null-safe check for `locales` in plugin configuration ([2ca78b0](https://github.com/hareland/simple-content-site/commit/2ca78b0facde5c4d9ff6847a606c51b8c2dcf80e))
+* **i18n:** adjust path resolution for `prefix_except_default` strategy in landing page query ([6348f56](https://github.com/hareland/simple-content-site/commit/6348f5661c81de1c8186cb5ab1998851b51f4b22))
+* **i18n:** enhance path resolution logic for `prefix_except_default` strategy in landing page query ([1b075f5](https://github.com/hareland/simple-content-site/commit/1b075f5b33a85c3e2051bdb9325713980955c8d1))
+* **i18n:** expose locale strategy in runtime config with caution note ([f2893c2](https://github.com/hareland/simple-content-site/commit/f2893c2c924b471674a1b007fc40c455f950ac47))
+* **i18n:** handle default locale path resolution for `prefix_except_default` strategy ([f85d357](https://github.com/hareland/simple-content-site/commit/f85d35756699d31d0e68464e1b1670fd04f7ee57))
+* **i18n:** move redirect logic to `i18n-redirect` plugin and refactor module setup ([9b2c8e1](https://github.com/hareland/simple-content-site/commit/9b2c8e1b085746747e3fb9d21ca2ed3f38732f12))
+* **i18n:** prevent redirect for strategies without prefix and log strategy in dev mode ([e528267](https://github.com/hareland/simple-content-site/commit/e5282679f8bf7aecd9cbe1b81ce849a9a3ce89fe))
+* **i18n:** refine path resolution for `prefix_except_default` strategy and remove debug log ([971935d](https://github.com/hareland/simple-content-site/commit/971935d0ea230cd82e381e8756aa722e9f30451f))
+* **i18n:** suppress TypeScript error for virtual import in `i18n-redirect` plugin ([74758fc](https://github.com/hareland/simple-content-site/commit/74758fcdbab7287c1c56d22ec46823dca19aaf96))
+* **i18n:** use `prefix_except_default` strategy and remove `@nuxtjs/i18n` module ([47348f7](https://github.com/hareland/simple-content-site/commit/47348f77f2e2ab0ffa82bdd04ad3984c6d98bb83))
+
 ## [2.2.2](https://github.com/hareland/simple-content-site/compare/v2.2.1...v2.2.2) (2026-01-18)
 
 ### Features
