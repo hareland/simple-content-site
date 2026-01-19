@@ -1,10 +1,9 @@
-import { createResolver, defineNuxtModule, addRouteMiddleware, addPlugin } from '@nuxt/kit'
+import { createResolver, defineNuxtModule, addPlugin } from '@nuxt/kit'
 import { defu } from 'defu'
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { inferSiteURL, getPackageJsonMetadata } from '../utils/meta'
 import { getGitBranch, getGitEnv, getLocalGitInfo } from '../utils/git'
-import type { NuxtMiddleware } from '@nuxt/schema'
 
 export default defineNuxtModule({
   meta: {
