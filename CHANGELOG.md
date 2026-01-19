@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.3.1](https://github.com/hareland/simple-content-site/compare/v2.3.0...v2.3.1) (2026-01-19)
+
+### Features
+
+* **i18n:** add `@nuxtjs/i18n` module and configure GitHub repository provider in `nuxt-studio` ([5006cc0](https://github.com/hareland/simple-content-site/commit/5006cc09153d66061a1629b4dd4353eb7de5aecb))
+
+### Bug Fixes
+
+* **i18n:** improve default locale handling and include file extensions in i18n collections ([0d342b8](https://github.com/hareland/simple-content-site/commit/0d342b83de0e6ef865252fc48b26a692c2f5f182))
+
 ## [2.3.0](https://github.com/hareland/simple-content-site/compare/v2.2.2...v2.3.0) (2026-01-19)
 
 ### Features
