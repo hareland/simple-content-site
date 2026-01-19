@@ -2,7 +2,7 @@ export default defineNuxtPlugin(() => {
   const nuxtApp = useNuxtApp()
 
   const i18nConfig = nuxtApp.$config.public.i18n
-  if (!i18nConfig || i18nConfig.locales.length === 0) {
+  if (!i18nConfig || i18nConfig?.locales?.length === 0) {
     return
   }
 
