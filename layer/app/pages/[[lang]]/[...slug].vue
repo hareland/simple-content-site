@@ -1,42 +1,23 @@
 <script setup lang="ts">
-import { kebabCase } from 'scule'
-import type { ContentNavigationItem, Collections, PagesCollectionItem } from '@nuxt/content'
+import type { ContentNavigationItem } from '@nuxt/content'
 import { findPageHeadline } from '@nuxt/content/utils'
 import { addPrerenderPath } from '../../utils/prerender'
+import { useSitePage } from '#imports'
 
 definePageMeta({
   layout: 'page',
 })
 
 const route = useRoute()
-const { locale, isEnabled, defaultLocale, strategy } = useSiteI18n()
+const { page, collectionName } = await useSitePage()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
-const collectionName = computed(() => {
-  if (!isEnabled.value || !defaultLocale.value) {
-    return 'pages'
-  }
-  return `pages_${locale.value}`
-})
-
-const [{ data: page }] = await Promise.all([
-  useAsyncData(kebabCase(route.path), () => {
-    // TODO: Move to useSitePage composable in the future
-    let path = route.path
-
-    if (strategy.value === 'prefix_except_default' && locale.value === defaultLocale.value) {
-      const prefix = `/${locale.value}`
-      if (path !== prefix && !path.startsWith(`${prefix}/`)) {
-        // we need to inject a virtual path to find the page in the collection
-        path = `${prefix}${path}`
-      }
-    }
-    return queryCollection(collectionName.value as keyof Collections).path(path).first() as Promise<PagesCollectionItem>
-  }),
-])
-
 if (!page.value) {
-  throw createError({ statusCode: 404, statusMessage: import.meta.dev ? `Page ${route.path} not found in ${collectionName.value}` : 'Pages not found', fatal: true })
+  throw createError({
+    statusCode: 404,
+    statusMessage: import.meta.dev ? `Page ${route.path} not found in ${collectionName.value}` : 'Pages not found',
+    fatal: true,
+  })
 }
 
 // Add the page path to the prerender list
@@ -57,7 +38,8 @@ watch(() => navigation?.value, () => {
   headline.value = findPageHeadline(navigation?.value, page.value?.path) || headline.value
 })
 
-defineOgImageComponent('Docs', {
+// todo: make the landing OG component customizable.
+defineOgImageComponent('Landing', {
   headline: headline.value,
 })
 </script>
