@@ -1,5 +1,4 @@
-import type { ContentNavigationItem, Collections, PagesCollectionItem } from '@nuxt/content'
-import { findPageHeadline } from '@nuxt/content/utils'
+import type { Collections, PagesCollectionItem } from '@nuxt/content'
 import { kebabCase } from 'scule'
 
 type SitePageOptions = {
@@ -8,7 +7,6 @@ type SitePageOptions = {
 export const useSitePage = async (opts?: SitePageOptions) => {
   const route = useRoute()
   const { locale, isEnabled, defaultLocale, strategy } = useSiteI18n()
-  const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
   const collectionName = computed(() => {
     if (!isEnabled.value || !defaultLocale.value) {
@@ -30,29 +28,17 @@ export const useSitePage = async (opts?: SitePageOptions) => {
     return await queryCollection(collectionName.value as keyof Collections).path(path).first() as PagesCollectionItem
   }
 
-  const { data: page, refresh } = await useAsyncData(
-    () => `site-page:${collectionName.value}:${kebabCase(route.path)}`,
-    async () => {
-      const match = await findByPath(route.path)
-      return match ? match : null
-    }, {
-      immediate: opts?.immediate,
-      watch: [collectionName, locale, () => route.path],
-    })
-
-  const title = computed(() => page.value?.seo?.title || page.value?.title || undefined)
-  const description = computed(() => page.value?.seo?.description || page.value?.description || undefined)
-  const headline = computed(() => findPageHeadline(navigation?.value, page.value?.path))
-  const exists = computed(() => page.value !== undefined)
-
   return {
-    page,
-    title,
-    description,
-    headline,
-    exists,
+    ...useAsyncData(
+      () => `site-page:${collectionName.value}:${kebabCase(route.path)}`,
+      async () => {
+        const match = await findByPath(route.path)
+        return match ? match : null
+      }, {
+        immediate: opts?.immediate,
+        watch: [collectionName, locale, () => route.path],
+      }),
     collectionName,
     findByPath,
-    refresh,
   }
 }
