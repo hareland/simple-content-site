@@ -1,3 +1,4 @@
+// @ts-expect-error This is a virtual import that is done in the consuming app.
 import { defineNuxtPlugin, useNuxtApp, addRouteMiddleware, useCookie, navigateTo } from '#imports'
 
 export default defineNuxtPlugin(() => {
