@@ -7,10 +7,9 @@ const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
 // @ts-expect-error cannot be typed?
 const locales = options.i18n?.locales
-// @ts-expect-error cannot be typed?
-const defaultLocale = options.i18n?.defaultLocale
-// @ts-expect-error cannot be typed?
-const i18nStrategy = options.i18n?.strategy || 'prefix_except_default'
+// todo: might be required for diff strategies for the collections
+// const defaultLocale = options.i18n?.defaultLocale
+// const i18nStrategy = options.i18n?.strategy || 'prefix_except_default'
 
 const variantEnum = z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link'])
 const colorEnum = z.enum(['primary', 'secondary', 'neutral', 'error', 'warning', 'success', 'info'])
