@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['nuxt-studio'],
+  modules: ['@nuxtjs/i18n', 'nuxt-studio'],
   i18n: {
     strategy: 'prefix_except_default',
     defaultLocale: 'en',
@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   studio: {
     // route: '/admin',
     repository: {
+      provider: 'github',
       owner: 'hareland',
       repo: 'simple-content-site',
       branch: 'main',
