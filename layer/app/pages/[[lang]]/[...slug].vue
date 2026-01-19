@@ -9,6 +9,7 @@ definePageMeta({
 })
 
 const route = useRoute()
+// @ts-expect-error This is not properly typed :/
 const { data: page, pending, collectionName } = await useSitePage()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
