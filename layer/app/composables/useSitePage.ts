@@ -30,16 +30,15 @@ export const useSitePage = async (opts?: SitePageOptions) => {
     return await queryCollection(collectionName.value as keyof Collections).path(path).first() as PagesCollectionItem
   }
 
-  const { data: page, refresh } = await useAsyncData(() => kebabCase(route.path), async () => {
-    const match = await findByPath(route.path)
-    return match ? match : undefined
-  }, {
-    immediate: opts?.immediate,
-  })
-  // watch(() => route.path, async (path) => {
-  //   const match = await findByPath(path)
-  //   page.value = match ? match : undefined
-  // })
+  const { data: page, refresh } = await useAsyncData(
+    () => `site-page:${collectionName.value}:${kebabCase(route.path)}`,
+    async () => {
+      const match = await findByPath(route.path)
+      return match ? match : null
+    }, {
+      immediate: opts?.immediate,
+      watch: [collectionName, locale, () => route.path],
+    })
 
   const title = computed(() => page.value?.seo?.title || page.value?.title || undefined)
   const description = computed(() => page.value?.seo?.description || page.value?.description || undefined)
