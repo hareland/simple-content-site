@@ -1,0 +1,25 @@
+left:
+  - 'Copyright &copy; [{fullYear}]{.text-primary}'
+sections:
+  - label: Links
+    children:
+      - label: Priser
+        to: /nb/pricing
+  - label: Features
+    children:
+      - label: Slidev
+        href: https://github.com/slidevjs/slidev
+      - label: Discord
+        href: https://discord.gg/slidev
+  - label: Legal
+    children:
+      - label: Terms of Service
+        href: https://github.com/slidevjs/slidev
+      - label: Privacy Policy
+        href: https://discord.gg/slidev
+
+right:
+  - icon: i-simple-icons-github
+    size: sm
+    variant: ghost
+    color: neutral
