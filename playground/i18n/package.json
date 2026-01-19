@@ -5,8 +5,11 @@
     "build": "nuxt build --extends simple-content-site"
   },
   "dependencies": {
+    "@nuxt/ui": "^4.3.0",
     "better-sqlite3": "^12.2.0",
     "nuxt": "^4.2.1",
-    "simple-content-site": "workspace:*"
+    "simple-content-site": "workspace:*",
+    "nuxt-studio": "latest",
+    "@nuxtjs/i18n": "^10.2.1"
   }
 }

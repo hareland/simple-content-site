@@ -7,6 +7,9 @@ const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
 // @ts-expect-error cannot be typed?
 const locales = options.i18n?.locales
+// todo: might be required for diff strategies for the collections
+// const defaultLocale = options.i18n?.defaultLocale
+// const i18nStrategy = options.i18n?.strategy || 'prefix_except_default'
 
 const variantEnum = z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link'])
 const colorEnum = z.enum(['primary', 'secondary', 'neutral', 'error', 'warning', 'success', 'info'])
@@ -83,10 +86,9 @@ const createFooterSchema = () => z.object({
   right: z.array(createLinkSchema()),
 })
 
-let collections: Record<string, DefinedCollection>
+let collections: Record<string, DefinedCollection> = {}
 
 const buildI18nCollections = () => {
-  collections = {}
   for (const locale of locales) {
     const code = (typeof locale === 'string' ? locale : locale.code).replace('-', '_')
 
@@ -94,7 +96,7 @@ const buildI18nCollections = () => {
       type: 'page',
       source: {
         cwd,
-        include: `${code}/**/*`,
+        include: `${code}/**/*.{md,yml}`,
         prefix: `/${code}`,
         exclude: [
           `${code}/header.yml`,
@@ -109,7 +111,6 @@ const buildI18nCollections = () => {
       source: {
         cwd,
         include: `${code}/header.yml`,
-        prefix: `/${code}`,
       },
       schema: createHeaderSchema(),
     })
@@ -119,7 +120,6 @@ const buildI18nCollections = () => {
       source: {
         cwd,
         include: `${code}/footer.yml`,
-        prefix: `/${code}`,
       },
       schema: createFooterSchema(),
     })
