@@ -90,8 +90,6 @@ export default defineNuxtModule({
         strategy: nuxt.options.i18n.strategy,
       })
 
-      console.log('[I18N Module]', { i18n: nuxt.options.i18n })
-
       // Expose filtered locales
       nuxt.options.runtimeConfig.public.Site = {
         filteredLocales,
