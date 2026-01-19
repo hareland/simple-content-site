@@ -22,6 +22,7 @@ export default defineNuxtModule({
       loadComposableIfNotFound('useSiteI18n')
       loadComposableIfNotFound('useSiteHeader')
       loadComposableIfNotFound('useSiteFooter')
+      loadComposableIfNotFound('useSitePage')
     })
   },
 })
