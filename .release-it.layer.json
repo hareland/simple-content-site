@@ -2,7 +2,8 @@
   "git": false,
   "github": false,
   "hooks": {
-    "before:init": ["pnpm lint", "pnpm typecheck"]
+    "before:init": ["pnpm lint", "pnpm typecheck"],
+    "before:release": ["cp ../README.md layer/README.md"]
   },
   "npm": {
     "publish": false
