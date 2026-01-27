@@ -3,7 +3,8 @@
   "github": false,
   "hooks": {
     "before:init": ["pnpm lint", "pnpm typecheck"],
-    "before:release": ["cp ./README.md ./layer/README.md"]
+    "before:release": ["cp ./README.md ./layer/README.md"],
+    "after:release": "rm ./layer/README.md"
   },
   "npm": {
     "publish": false
