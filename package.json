@@ -1,7 +1,7 @@
 {
   "name": "simple-content-site-workspace",
   "description": "A minimal layer for nuxt-content for a simple website with basic functions.",
-  "version": "2.3.1",
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hareland/simple-content-site.git"

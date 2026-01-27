@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.0.0](https://github.com/hareland/simple-content-site/compare/v2.3.1...v3.0.0) (2026-01-27)
+
+### Features
+
+* **blog:** add localized blog pages and update content config for i18n handling ([99ff53b](https://github.com/hareland/simple-content-site/commit/99ff53b0acbba9de74a8197aa4b0b619a897bf56))
+* **blog:** enhance "Getting Started" post with callouts, cards, and UI features ([566b533](https://github.com/hareland/simple-content-site/commit/566b5333f3be2362fc1ddfd55e3464234e9b0b3b))
+* **config:** add `excludeContent` option to `scs` module and integrate exclusions into content sources ([298a1a9](https://github.com/hareland/simple-content-site/commit/298a1a9da9a394fe6bec3fdda206e47202a253bc))
+* **examples:** add custom collections ([d8d76ac](https://github.com/hareland/simple-content-site/commit/d8d76ac4dcc814495565c13c682bc695cb907e50))
+
+### Bug Fixes
+
+* async-data cache key collisions in getKeyForPath. ([4fe5012](https://github.com/hareland/simple-content-site/commit/4fe50128667d071ad884d30fa883ea8ff5a3422a))
+* **config:** correct `README.md` path in release configuration ([b4fd5c4](https://github.com/hareland/simple-content-site/commit/b4fd5c4aa82a2e8fde2006ea66b9f269378561c5))
+* **config:** correct glob pattern for content file inclusion in content sources ([a00bf6f](https://github.com/hareland/simple-content-site/commit/a00bf6f396c02861a0f2fc1a31756c7f9b1203bd))
+* revert `import.meta.dev` removal ([0832543](https://github.com/hareland/simple-content-site/commit/08325430b550405d6843cf4a3ff00e07a44c61e4))
+* update `createError` parameters for consistency with library standards ([87a879f](https://github.com/hareland/simple-content-site/commit/87a879fbba090861dae0e199abd4859ba1df1035))
+
 ## [2.3.1](https://github.com/hareland/simple-content-site/compare/v2.3.0...v2.3.1) (2026-01-19)
 
 ### Features
