@@ -4,11 +4,11 @@ import { kebabCase } from 'scule'
 export const useSitePage = () => {
   const { locale, isEnabled, defaultLocale, strategy } = useSiteI18n()
 
-  const collectionName = computed(() => {
+  const collectionName = computed<keyof Collections>(() => {
     if (!isEnabled.value || !defaultLocale.value || !locale.value) {
-      return 'pages'
+      return 'pages' as keyof Collections
     }
-    return `pages_${locale.value}`
+    return `pages_${locale.value}` as keyof Collections
   })
 
   const getKeyForPath = (path: string) => {
@@ -27,7 +27,7 @@ export const useSitePage = () => {
         path = `${prefix}${path}`
       }
     }
-    return await queryCollection(collectionName.value as keyof Collections).path(path).first() as PagesCollectionItem
+    return await queryCollection(collectionName.value).path(path).first() as PagesCollectionItem
   }
 
   // watch(() => route.path, async (path) => {
