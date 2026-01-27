@@ -6,7 +6,7 @@ import type { Collections } from '@nuxt/content'
 export default eventHandler(async (event) => {
   const slug = getRouterParams(event)['slug.md']
   if (!slug?.endsWith('.md')) {
-    throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+    throw createError({ status: 404, message: 'Page not found', fatal: true })
   }
 
   const path = withLeadingSlash(slug.replace('.md', ''))
@@ -31,7 +31,7 @@ export default eventHandler(async (event) => {
 
   const page = await queryCollection(event, collectionName as keyof Omit<Collections, 'header' | 'footer'>).path(path).first()
   if (!page) {
-    throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
+    throw createError({ status: 404, message: 'Page not found', fatal: true })
   }
 
   // Add title and description to the top of the page if missing
