@@ -100,7 +100,7 @@ const buildI18nCollections = () => {
       type: 'page',
       source: {
         cwd,
-        include: `${code}/**/*.{md,yml}`,
+        include: `${code}/**/**.{md,yml}`,
         prefix: `/${code}`,
         exclude: [
           `${code}/header.yml`,
@@ -137,7 +137,7 @@ const buildDefaultCollections = () => {
       type: 'page',
       source: {
         cwd,
-        include: '**/*.{md,yml}',
+        include: '**/**.{md,yml}',
         exclude: [
           'header.yml',
           'footer.yml',
