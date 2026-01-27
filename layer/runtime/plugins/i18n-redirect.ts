@@ -12,7 +12,6 @@ export default defineNuxtPlugin(() => {
 
   addRouteMiddleware((to) => {
     if (to.path === '/') {
-      // @ts-expect-error Typed expose strategy
       if (import.meta.dev) {
         console.log(`[I18N] Redirecting to default locale using ${i18nConfig.strategy}`)
       }

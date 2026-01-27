@@ -1,13 +1,12 @@
 import { defineNuxtModule, createResolver } from '@nuxt/kit'
 
+const { resolve } = createResolver(import.meta.url)
 export default defineNuxtModule({
   meta: {
     // todo: rename this module to fit it's purpose
     name: 'routing',
   },
   async setup(_options, nuxt) {
-    const { resolve } = createResolver(import.meta.url)
-
     // Ensure useSiteI18n is available in the app
     nuxt.hook('imports:extend', (imports) => {
       const loadComposableIfNotFound = (composableName: string) => {

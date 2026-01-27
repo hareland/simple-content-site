@@ -1,10 +1,15 @@
+import { z } from 'zod/v4'
 import type { DefinedCollection } from '@nuxt/content'
-import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+import { defineContentConfig, defineCollection, property } from '@nuxt/content'
 import { useNuxt } from '@nuxt/kit'
 import { joinURL } from 'ufo'
 
 const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
+
+// @ts-expect-error cannot be typed?
+const contentExcluded = options?.scs?.excludeContent || []
+
 // @ts-expect-error cannot be typed?
 const locales = options.i18n?.locales
 // todo: might be required for diff strategies for the collections
@@ -29,10 +34,10 @@ const createLinkSchema = () => z.object({
   class: z.string().optional(),
   label: z.string().nonempty(),
   to: z.string().nonempty(),
-  icon: z.string().optional().editor({ input: 'icon' }),
+  icon: property(z.string().optional()).editor({ input: 'icon' }),
   size: sizeEnum.optional(),
   trailing: z.boolean().optional(),
-  trailingIcon: z.string().optional().editor({ input: 'icon' }),
+  trailingIcon: property(z.string().optional()).editor({ input: 'icon' }),
   target: z.string().optional(),
   color: colorEnum.optional(),
   variant: variantEnum.optional(),
@@ -42,10 +47,10 @@ const createNavigationSchema = () => z.object({
   label: z.string().nonempty(),
   class: z.string().optional(),
   to: z.string().nonempty(),
-  icon: z.string().optional().editor({ input: 'icon' }),
+  icon: property(z.string().optional()).editor({ input: 'icon' }),
   size: sizeEnum.optional(),
   trailing: z.boolean().optional(),
-  trailingIcon: z.string().optional().editor({ input: 'icon' }),
+  trailingIcon: property(z.string().optional()).editor({ input: 'icon' }),
   target: z.string().optional(),
   color: colorEnum.optional(),
   variant: variantEnum.optional(),
@@ -96,11 +101,12 @@ const buildI18nCollections = () => {
       type: 'page',
       source: {
         cwd,
-        include: `${code}/**/*.{md,yml}`,
+        include: `${code}/**/**.{md,yml}`,
         prefix: `/${code}`,
         exclude: [
           `${code}/header.yml`,
           `${code}/footer.yml`,
+          ...contentExcluded,
         ],
       },
       schema: createPageSchema(),
@@ -132,10 +138,11 @@ const buildDefaultCollections = () => {
       type: 'page',
       source: {
         cwd,
-        include: '**',
+        include: '**/**.{md,yml}',
         exclude: [
           'header.yml',
           'footer.yml',
+          ...contentExcluded,
         ],
       },
       schema: createPageSchema(),

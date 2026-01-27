@@ -2,13 +2,13 @@ import { defineNuxtModule, addTemplate, createResolver } from '@nuxt/kit'
 import { joinURL } from 'ufo'
 import { resolveModulePath } from 'exsolve'
 
+const resolver = createResolver(import.meta.url)
 export default defineNuxtModule({
   meta: {
     name: 'css',
   },
   async setup(_options, nuxt) {
     const dir = nuxt.options.rootDir
-    const resolver = createResolver(import.meta.url)
 
     const contentDir = joinURL(dir, 'content')
     const uiPath = resolveModulePath('@nuxt/ui', { from: import.meta.url, conditions: ['style'] })
@@ -27,6 +27,7 @@ export default defineNuxtModule({
       },
     })
 
+    nuxt.options.css ||= []
     nuxt.options.css.unshift(cssTemplate.dst)
   },
 })

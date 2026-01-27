@@ -1,5 +1,9 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/i18n', 'nuxt-studio'],
+  experimental: {
+    asyncContext: true,
+  },
+  compatibilityDate: '2025-07-22',
   i18n: {
     strategy: 'prefix_except_default',
     defaultLocale: 'en',
@@ -10,6 +14,9 @@ export default defineNuxtConfig({
       code: 'nb',
       name: 'Norsk',
     }],
+  },
+  scs: {
+    excludeContent: ['*/blog/**'],
   },
   studio: {
     // route: '/admin',
