@@ -12,7 +12,9 @@ export const useSitePage = () => {
   })
 
   const getKeyForPath = (path: string) => {
-    return `${toValue(collectionName.value).replace('_', '-')}-${kebabCase(path)}`
+    const prefix = toValue(collectionName.value).replaceAll('_', '-')
+    const suffix = kebabCase(path.replaceAll('/', '--'))
+    return `${prefix}:${suffix}`
   }
 
   // const page = ref<PagesCollectionItem | undefined>()
