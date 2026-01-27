@@ -11,6 +11,9 @@ export default defineNuxtConfig({
       name: 'Norsk',
     }],
   },
+  scs: {
+    excludeContent: ['*/1.blog/**'],
+  },
   studio: {
     // route: '/admin',
     repository: {
