@@ -27,6 +27,7 @@ export default defineNuxtModule({
       },
     })
 
+    nuxt.options.css ||= []
     nuxt.options.css.unshift(cssTemplate.dst)
   },
 })

@@ -23,6 +23,7 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
     const url = inferSiteURL()
     const meta = await getPackageJsonMetadata(dir)
     const gitInfo = await getLocalGitInfo(dir) || getGitEnv()
+    // @ts-expect-error This is not typed.
     const siteName = nuxt.options?.site?.name || meta.name || gitInfo?.name || ''
 
     // nuxt.options.llms = defu(nuxt.options.llms, {
@@ -112,6 +113,7 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
         })
       }
 
+      // @ts-expect-error This is not properly typed after updates.
       nuxt.hook('i18n:registerModule', (register) => {
         const langDir = resolve('../i18n/locales')
 
