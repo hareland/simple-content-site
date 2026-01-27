@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     }],
   },
   scs: {
-    excludeContent: ['*/1.blog/**'],
+    excludeContent: ['*/blog/**'],
   },
   studio: {
     // route: '/admin',

@@ -6,8 +6,7 @@ import { joinURL } from 'ufo'
 const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
 
-// @ts-expect-error cannot be typed?
-const locales = options.i18n?.locales
+const locales = options.i18n?.locales || []
 
 const collections: Record<string, DefinedCollection> = {}
 
@@ -19,7 +18,7 @@ for (const locale of locales) {
     source: {
       cwd,
       include: `${code}/blog/**`,
-      prefix: `/${code}/blog`,
+      prefix: `/blog`,
     },
   })
 }

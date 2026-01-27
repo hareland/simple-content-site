@@ -2,7 +2,7 @@ title: Playground
 navigation:
   - label: Home
     to: /
-  - label: Pricing
-    to: /pricing
+  - label: Blog
+    to: /blog
   - label: About
     to: /about
