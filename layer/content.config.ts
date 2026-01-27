@@ -5,6 +5,10 @@ import { joinURL } from 'ufo'
 
 const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
+
+// @ts-expect-error cannot be typed?
+const contentExcluded = options?.scs?.excludeContent || []
+
 // @ts-expect-error cannot be typed?
 const locales = options.i18n?.locales
 // todo: might be required for diff strategies for the collections
@@ -101,6 +105,7 @@ const buildI18nCollections = () => {
         exclude: [
           `${code}/header.yml`,
           `${code}/footer.yml`,
+          ...contentExcluded,
         ],
       },
       schema: createPageSchema(),
@@ -132,10 +137,11 @@ const buildDefaultCollections = () => {
       type: 'page',
       source: {
         cwd,
-        include: '**',
+        include: '**/*.{md,yml}',
         exclude: [
           'header.yml',
           'footer.yml',
+          ...contentExcluded,
         ],
       },
       schema: createPageSchema(),
