@@ -1,5 +1,9 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/i18n', 'nuxt-studio'],
+  experimental: {
+    asyncContext: true,
+  },
+  compatibilityDate: '2025-07-22',
   i18n: {
     strategy: 'prefix_except_default',
     defaultLocale: 'en',

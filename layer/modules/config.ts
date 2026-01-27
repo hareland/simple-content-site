@@ -9,6 +9,8 @@ interface SimpleContentSiteOptions {
   excludeContent?: string[]
 }
 
+const { resolve } = createResolver(import.meta.url)
+
 export default defineNuxtModule<SimpleContentSiteOptions>({
   meta: {
     name: 'scs',
@@ -60,7 +62,6 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
         ** I18N
         */
     if (nuxt.options.i18n && nuxt.options.i18n.locales) {
-      const { resolve } = createResolver(import.meta.url)
       const { resolve: resolveRoot } = createResolver(dir)
 
       // Filter locales to only include existing ones

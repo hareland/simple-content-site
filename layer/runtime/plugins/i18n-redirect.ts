@@ -13,7 +13,7 @@ export default defineNuxtPlugin(() => {
   addRouteMiddleware((to) => {
     if (to.path === '/') {
       // @ts-expect-error Typed expose strategy
-      if (import.meta.dev) {
+      if (false) {
         console.log(`[I18N] Redirecting to default locale using ${i18nConfig.strategy}`)
       }
       const cookieLocale = useCookie('i18n_redirected').value || i18nConfig?.defaultLocale || 'en'
