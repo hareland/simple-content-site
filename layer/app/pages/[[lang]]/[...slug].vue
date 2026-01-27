@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
 import { findPageHeadline } from '@nuxt/content/utils'
-import { addPrerenderPath } from '../../utils/prerender'
+// import { addPrerenderPath } from '../../utils/prerender'
 import { useSitePage } from '#imports'
 
 definePageMeta({
@@ -9,8 +9,13 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { page, collectionName } = await useSitePage()
-const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
+const { findByPath, collectionName, getKeyForPath } = useSitePage()
+
+const { data: page } = await useAsyncData(() => getKeyForPath(route.path), async () => {
+  return await findByPath(route.path)
+}, {
+  immediate: true,
+})
 
 if (!page.value) {
   throw createError({
@@ -20,8 +25,10 @@ if (!page.value) {
   })
 }
 
+const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
+
 // Add the page path to the prerender list
-addPrerenderPath(`/raw${route.path}.md`)
+// addPrerenderPath(`/raw${route.path}.md`)
 
 const title = page.value.seo?.title || page.value.title
 const description = page.value.seo?.description || page.value.description
