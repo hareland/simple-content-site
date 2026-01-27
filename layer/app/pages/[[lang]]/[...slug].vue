@@ -9,7 +9,7 @@ definePageMeta({
 })
 
 const route = useRoute()
-const { findByPath, collectionName, getKeyForPath } = useSitePage()
+const { findByPath, getKeyForPath } = useSitePage()
 
 const { data: page } = await useAsyncData(() => getKeyForPath(route.path), async () => {
   return await findByPath(route.path)
@@ -19,8 +19,8 @@ const { data: page } = await useAsyncData(() => getKeyForPath(route.path), async
 
 if (!page.value) {
   throw createError({
-    statusCode: 404,
-    statusMessage: import.meta.dev ? `Page ${route.path} not found in ${collectionName.value}` : 'Pages not found',
+    status: 404,
+    message: 'Page not found',
     fatal: true,
   })
 }

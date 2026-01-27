@@ -1,5 +1,6 @@
+import { z } from 'zod/v4'
 import type { DefinedCollection } from '@nuxt/content'
-import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+import { defineContentConfig, defineCollection, property } from '@nuxt/content'
 import { useNuxt } from '@nuxt/kit'
 import { joinURL } from 'ufo'
 
@@ -33,10 +34,10 @@ const createLinkSchema = () => z.object({
   class: z.string().optional(),
   label: z.string().nonempty(),
   to: z.string().nonempty(),
-  icon: z.string().optional().editor({ input: 'icon' }),
+  icon: property(z.string().optional()).editor({ input: 'icon' }),
   size: sizeEnum.optional(),
   trailing: z.boolean().optional(),
-  trailingIcon: z.string().optional().editor({ input: 'icon' }),
+  trailingIcon: property(z.string().optional()).editor({ input: 'icon' }),
   target: z.string().optional(),
   color: colorEnum.optional(),
   variant: variantEnum.optional(),
@@ -46,10 +47,10 @@ const createNavigationSchema = () => z.object({
   label: z.string().nonempty(),
   class: z.string().optional(),
   to: z.string().nonempty(),
-  icon: z.string().optional().editor({ input: 'icon' }),
+  icon: property(z.string().optional()).editor({ input: 'icon' }),
   size: sizeEnum.optional(),
   trailing: z.boolean().optional(),
-  trailingIcon: z.string().optional().editor({ input: 'icon' }),
+  trailingIcon: property(z.string().optional()).editor({ input: 'icon' }),
   target: z.string().optional(),
   color: colorEnum.optional(),
   variant: variantEnum.optional(),

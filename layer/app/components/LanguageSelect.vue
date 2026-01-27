@@ -42,7 +42,7 @@ function getEmojiFlag(locale: string): string {
 
 <template>
   <UPopover
-    mode="hover"
+    mode="click"
     :content="{ align: 'end' }"
   >
     <UButton

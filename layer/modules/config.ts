@@ -9,6 +9,8 @@ interface SimpleContentSiteOptions {
   excludeContent?: string[]
 }
 
+const { resolve } = createResolver(import.meta.url)
+
 export default defineNuxtModule<SimpleContentSiteOptions>({
   meta: {
     name: 'scs',
@@ -21,6 +23,7 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
     const url = inferSiteURL()
     const meta = await getPackageJsonMetadata(dir)
     const gitInfo = await getLocalGitInfo(dir) || getGitEnv()
+    // @ts-expect-error This is not typed.
     const siteName = nuxt.options?.site?.name || meta.name || gitInfo?.name || ''
 
     // nuxt.options.llms = defu(nuxt.options.llms, {
@@ -60,7 +63,6 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
         ** I18N
         */
     if (nuxt.options.i18n && nuxt.options.i18n.locales) {
-      const { resolve } = createResolver(import.meta.url)
       const { resolve: resolveRoot } = createResolver(dir)
 
       // Filter locales to only include existing ones
@@ -111,6 +113,7 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
         })
       }
 
+      // @ts-expect-error This is not properly typed after updates.
       nuxt.hook('i18n:registerModule', (register) => {
         const langDir = resolve('../i18n/locales')
 
