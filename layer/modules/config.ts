@@ -5,9 +5,16 @@ import { join } from 'node:path'
 import { inferSiteURL, getPackageJsonMetadata } from '../utils/meta'
 import { getGitBranch, getGitEnv, getLocalGitInfo } from '../utils/git'
 
-export default defineNuxtModule({
+interface SimpleContentSiteOptions {
+  excludeContent?: string[]
+}
+
+export default defineNuxtModule<SimpleContentSiteOptions>({
   meta: {
-    name: 'config',
+    name: 'scs',
+  },
+  defaults: {
+    excludeContent: [],
   },
   async setup(_options, nuxt) {
     const dir = nuxt.options.rootDir
