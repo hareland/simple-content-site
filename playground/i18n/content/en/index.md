@@ -1,4 +1,6 @@
 ---
+title: Home
+description: 
 seo:
   title: Make a simple website with Markdown
   description: Ship fast, flexible, and SEO-optimized documentation with beautiful
@@ -8,7 +10,7 @@ seo:
 
 ::u-page-hero
 #title
-Make [simple]{.text-primary} websites :br  with _Markdown\__
+Make [simple]{.text-primary} websites :br  with _Markdown\__ + Vue
 
 #description
 Ship fast, flexible, and SEO-optimized documentation with beautiful design out of the box.
@@ -22,7 +24,7 @@ See How [i18n](./i18n) works.
   ---
   color: neutral
   size: xl
-  to: /en/getting-started/installation
+  to: /en/getting-started
   trailing-icon: i-lucide-arrow-right
   ---
   Get started

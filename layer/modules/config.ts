@@ -16,16 +16,6 @@ export default defineNuxtModule({
     const gitInfo = await getLocalGitInfo(dir) || getGitEnv()
     const siteName = nuxt.options?.site?.name || meta.name || gitInfo?.name || ''
 
-    // nuxt.options.llms = defu(nuxt.options.llms, {
-    //   domain: url,
-    //   title: siteName,
-    //   description: meta.description || '',
-    //   full: {
-    //     title: siteName,
-    //     description: meta.description || '',
-    //   },
-    // })
-
     nuxt.options.site = defu(nuxt.options.site, {
       url,
       name: siteName,
@@ -49,34 +39,47 @@ export default defineNuxtModule({
       branch: getGitBranch(),
     })
 
-    /*
-        ** I18N
-        */
+    /**
+     * I18n
+     */
     if (nuxt.options.i18n && nuxt.options.i18n.locales) {
       const { resolve } = createResolver(import.meta.url)
       const { resolve: resolveRoot } = createResolver(dir)
 
+      const getLocaleCode = (locale: string | { code: string }) => typeof locale === 'string' ? locale : locale.code
+
+      const fileNamesForLocale = (locale: string | { code: string }) => {
+        const localeCode = getLocaleCode(locale)
+        return [
+          `${localeCode}.json`,
+          // `${localeCode}.ts|.mjs`,
+        ]
+      }
+
       // Filter locales to only include existing ones
       const filteredLocales = nuxt.options.i18n.locales.filter((locale) => {
-        const localeCode = typeof locale === 'string' ? locale : locale.code
+        const localeCode = getLocaleCode(locale)
 
         // Check for JSON locale file
-        const localeFilePath = resolve('../i18n/locales', `${localeCode}.json`)
-        const hasLocaleFile = existsSync(localeFilePath)
+        const possibleLocaleFiles = fileNamesForLocale(locale)
+        const hasAnyLocaleFile = possibleLocaleFiles.some((fileName) => {
+          return existsSync(resolve('../i18n/locales', fileName)) || existsSync(resolveRoot('i18n/locales', fileName))
+        })
 
-        // Check for content folder
+        // Ensure we have a folder for the pages for this locale
+        // - otherwise there is no point in enabling it.
         const contentPath = join(nuxt.options.rootDir, 'content', localeCode)
         const hasContentFolder = existsSync(contentPath)
 
-        if (!hasLocaleFile) {
-          console.warn(`[Site] Locale file not found: ${localeCode}.json - skipping locale "${localeCode}"`)
+        if (!hasAnyLocaleFile) {
+          console.warn(`[Site] Locale file not found: ${possibleLocaleFiles.join('| ')} - skipping locale "${localeCode}"`)
         }
 
         if (!hasContentFolder) {
           console.warn(`[Site] Content folder not found: content/${localeCode}/ - skipping locale "${localeCode}"`)
         }
 
-        return hasLocaleFile && hasContentFolder
+        return hasContentFolder && hasAnyLocaleFile
       })
 
       //
@@ -107,12 +110,22 @@ export default defineNuxtModule({
       nuxt.hook('i18n:registerModule', (register) => {
         const langDir = resolve('../i18n/locales')
 
+        //
         const locales = filteredLocales?.map((locale) => {
           // Possibly load custom translations.
-          const localeCode = typeof locale === 'string' ? locale : locale.code
-          const customLocalePath = resolveRoot('i18n/locales', `${localeCode}.json`)
-          const hasCustomLocale = existsSync(customLocalePath)
-          const files = hasCustomLocale ? [customLocalePath, `${localeCode}.json`] : [`${localeCode}.json`]
+          const localeCode = getLocaleCode(locale)
+          const customLocaleFiles = fileNamesForLocale(locale).map(f => ([
+            resolveRoot('i18n/locales', f),
+            resolve('../i18n/locales', f),
+          ])).flat().filter(p => existsSync(p))
+
+          // ensure we can use all files in the consuming app.
+          const files = [
+            ...customLocaleFiles,
+            `${localeCode}.json`, // default: this gets the lowest priority
+          ]
+
+          //
           return typeof locale === 'string'
             ? {
                 code: locale,
@@ -126,6 +139,7 @@ export default defineNuxtModule({
               }
         })
 
+        //
         register({
           langDir,
           locales,

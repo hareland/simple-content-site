@@ -1,3 +1,6 @@
 {
-  "test": "Foo Bar"
+  "test": "This is test from en.json",
+  "foo": {
+    "bar": "This is foo.bar from en.json"
+  }
 }
