@@ -33,7 +33,14 @@ const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 const title = page.value.seo?.title || page.value.title
 const description = page.value.seo?.description || page.value.description
 
+const titleTemplate = computed<string>(() => {
+  const pageTitleTemplate = page.value?.seo?.titleTemplate as string | undefined
+  if (pageTitleTemplate) return pageTitleTemplate
+  return useAppConfig().seo.titleTemplate
+})
+
 useSeoMeta({
+  titleTemplate,
   title,
   ogTitle: title,
   description,
