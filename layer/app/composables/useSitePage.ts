@@ -1,5 +1,6 @@
 import type { Collections, PagesCollectionItem } from '@nuxt/content'
 import { kebabCase } from 'scule'
+import { withLeadingSlash } from 'ufo'
 
 export const useSitePage = () => {
   const { locale, isEnabled, defaultLocale, strategy } = useSiteI18n()
@@ -21,7 +22,7 @@ export const useSitePage = () => {
 
   const findByPath = async (path: string) => {
     if (isEnabled.value && strategy.value === 'prefix_except_default' && locale.value === defaultLocale.value) {
-      const prefix = `/${locale.value}`
+      const prefix = withLeadingSlash(locale.value)
       if (path !== prefix && !path.startsWith(`${prefix}/`)) {
         // we need to inject a virtual path to find the page in the collection
         path = `${prefix}${path}`
