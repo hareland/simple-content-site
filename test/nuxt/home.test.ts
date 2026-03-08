@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import App from '../../layer/app/app.vue'
+import { withTrailingSlash } from 'ufo'
 
 vi.stubGlobal('defineOgImageComponent', vi.fn())
 
@@ -50,9 +51,11 @@ const pageMap = new Map(pagesToTest.map(p => [p.path, p.page]))
 mockNuxtImport('useSitePage', () => () => ({
   getKeyForPath: (path: string) => `page:${path}`,
   findByPath: (path: string) => {
-    const match = pageMap.get(path)
+    // Normalize trailing slash to match pageMap keys
+    const normalizedPath = path === '/' ? path : path.replace(/\/$/, '')
+    const match = pageMap.get(normalizedPath)
     if (!match) return null
-    return { _path: path, ...match }
+    return { _path: normalizedPath, ...match }
   },
 }))
 
@@ -88,7 +91,7 @@ describe('routing', () => {
     })
 
     it(`renders with trailing slash`, async () => {
-      const trailingPath = path === '/' ? '/' : `${path}/`
+      const trailingPath = withTrailingSlash(path)
       const component = await mountSuspended(App, { route: trailingPath })
       expect(component.html()).toContain('simple-content-site')
       for (const text of contains) {
