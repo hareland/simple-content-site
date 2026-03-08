@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  extends: ['../../layer/'],
   modules: ['@nuxtjs/i18n', 'nuxt-studio'],
   experimental: {
     asyncContext: true,
