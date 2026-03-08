@@ -59,7 +59,7 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
     // todo: exposing the strategy like this might cause issues in the future.
     //  So it will be better to expose the i18n redirect plugin instead from a module.
     nuxt.options.runtimeConfig.public.i18n = defu(nuxt.options.runtimeConfig.public.i18n, {
-      strategy: nuxt.options.i18n.strategy,
+      strategy: (nuxt.options.i18n ? nuxt.options.i18n.strategy : undefined) || 'prefix_except_default',
     })
 
     const i18nStrategy = nuxt.options.runtimeConfig.public.i18n.strategy as string
@@ -103,7 +103,8 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
         filteredLocales,
       }
 
-      nuxt.hook('i18n:registerModule', (register) => {
+      // @ts-expect-error This is messed up...
+      nuxt.hook('i18n:registerModule', (register: never) => {
         const langDir = resolve('../i18n/locales')
 
         const locales = filteredLocales?.map((locale) => {
@@ -120,6 +121,7 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
               }
         })
 
+        // @ts-expect-error This is amessed up too
         register({
           langDir,
           locales,

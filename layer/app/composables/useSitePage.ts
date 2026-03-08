@@ -1,6 +1,6 @@
 import type { Collections, PagesCollectionItem } from '@nuxt/content'
 import { kebabCase } from 'scule'
-import { withLeadingSlash } from 'ufo'
+import { joinURL, withLeadingSlash } from 'ufo'
 
 export const useSitePage = () => {
   const { locale, isEnabled, defaultLocale, strategy } = useSiteI18n()
@@ -18,23 +18,15 @@ export const useSitePage = () => {
     return `${prefix}:${suffix}`
   }
 
-  // const page = ref<PagesCollectionItem | undefined>()
-
   const findByPath = async (path: string) => {
     if (isEnabled.value && strategy.value === 'prefix_except_default' && locale.value === defaultLocale.value) {
-      const prefix = withLeadingSlash(locale.value)
-      if (path !== prefix && !path.startsWith(`${prefix}/`)) {
-        // we need to inject a virtual path to find the page in the collection
-        path = `${prefix}${path}`
+      const localePrefix = withLeadingSlash(locale.value)
+      if (path !== localePrefix && !path.startsWith(`${localePrefix}/`)) {
+        path = joinURL(localePrefix, path)
       }
     }
-    return await queryCollection(collectionName.value).path(path).first() as PagesCollectionItem
+    return await queryCollection(collectionName.value).path(withLeadingSlash(path)).first() as PagesCollectionItem
   }
-
-  // watch(() => route.path, async (path) => {
-  //   const match = await findByPath(path)
-  //   page.value = match ? match : undefined
-  // })
 
   return {
     collectionName,
