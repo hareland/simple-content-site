@@ -2,6 +2,7 @@ packages:
   - ./
   - ./playground/**
   - layer
+  - test/fixtures/**
 
 ignoredBuiltDependencies:
   - '@parcel/watcher'
