@@ -13,6 +13,7 @@ const route = useRoute()
 const { findByPath, getKeyForPath } = useSitePage()
 
 const { data: page } = await useAsyncData(() => getKeyForPath(route.path), async () => {
+  console.log('fetching page', route.path)
   return await findByPath(withLeadingSlash(route.path) || '/')
 }, {
   immediate: true,

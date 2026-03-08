@@ -14,7 +14,7 @@ export const useSitePage = () => {
 
   const getKeyForPath = (path: string) => {
     const prefix = toValue(collectionName.value).replaceAll('_', '-')
-    const suffix = kebabCase(path.replaceAll('/', '--'))
+    const suffix = kebabCase(withLeadingSlash(path).replaceAll('/', '--'))
     return `${prefix}:${suffix}`
   }
 
