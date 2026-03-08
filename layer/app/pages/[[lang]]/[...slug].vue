@@ -3,6 +3,7 @@ import type { ContentNavigationItem } from '@nuxt/content'
 import { findPageHeadline } from '@nuxt/content/utils'
 // import { addPrerenderPath } from '../../utils/prerender'
 import { useSitePage } from '#imports'
+import { withLeadingSlash } from 'ufo'
 
 definePageMeta({
   layout: 'page',
@@ -12,7 +13,7 @@ const route = useRoute()
 const { findByPath, getKeyForPath } = useSitePage()
 
 const { data: page } = await useAsyncData(() => getKeyForPath(route.path), async () => {
-  return await findByPath(route.path)
+  return await findByPath(withLeadingSlash(route.path) || '/')
 }, {
   immediate: true,
 })
