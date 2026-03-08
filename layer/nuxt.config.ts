@@ -52,13 +52,6 @@ export default defineNuxtConfig({
   //   compatibilityVersion: 5,
   // },
   compatibilityDate: '2025-07-22',
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      failOnError: false,
-      autoSubfolderIndex: false,
-    },
-  },
   hooks: {
     'nitro:config'(nitroConfig) {
       const nuxt = useNuxt()
