@@ -25,7 +25,7 @@ export const useSiteI18n = () => {
   }
 
   const { locale, t } = useI18n()
-  const filteredLocales = (config.Site as { filteredLocales: LocaleObject<string>[] })?.filteredLocales || []
+  const filteredLocales = (config.scs as { filteredLocales: LocaleObject<string>[] })?.filteredLocales || []
 
   return {
     isEnabled,
