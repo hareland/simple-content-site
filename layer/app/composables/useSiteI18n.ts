@@ -5,7 +5,6 @@ export const useSiteI18n = () => {
   const config = useRuntimeConfig().public
   const isEnabled = ref(!!config.i18n && config.i18n.locales?.length > 0)
   // todo: reading the strategy like this might cause issues in the future.
-  // @ts-expect-error Due to the above comment
   const strategy = ref(config.i18n?.strategy || 'prefix_except_default')
 
   if (!isEnabled.value) {
@@ -25,7 +24,7 @@ export const useSiteI18n = () => {
   }
 
   const { locale, t } = useI18n()
-  const filteredLocales = (config.Site as { filteredLocales: LocaleObject<string>[] })?.filteredLocales || []
+  const filteredLocales = (config.scs as { filteredLocales: LocaleObject<string>[] })?.filteredLocales || []
 
   return {
     isEnabled,

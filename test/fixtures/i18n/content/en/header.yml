@@ -1,0 +1,8 @@
+title: I18n Playground
+navigation:
+  - label: Home
+    to: /
+  - label: Blog
+    to: /blog
+  - label: About
+    to: /about

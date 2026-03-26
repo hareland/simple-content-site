@@ -1,5 +1,6 @@
 {
-  "name": "simple-content-site-i18n-playground",
+  "name": "simple-content-site-i18n-test",
+  "type": "module",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build"

@@ -4,9 +4,9 @@ sections:
   - label: Links
     children:
       - label: Pricing
-        to: /pricing
+        to: /nb
       - label: Features
-        to: /features
+        to: /blog
   - label: Features
     children:
       - label: Simple

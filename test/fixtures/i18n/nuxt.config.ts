@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
-  extends: ['../../layer/'],
-  modules: ['@nuxtjs/i18n', 'nuxt-studio'],
+  extends: ['../../../layer/'],
+  modules: ['@nuxtjs/i18n'],
   experimental: {
     asyncContext: true,
   },
@@ -18,16 +18,5 @@ export default defineNuxtConfig({
   },
   scs: {
     excludeContent: ['*/blog/**'],
-  },
-  studio: {
-    // route: '/admin',
-    repository: {
-      provider: 'github',
-      owner: 'hareland',
-      repo: 'simple-content-site',
-      branch: 'main',
-      rootDir: 'playground/i18n',
-      private: false,
-    },
   },
 })

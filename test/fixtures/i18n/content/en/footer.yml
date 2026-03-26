@@ -3,20 +3,22 @@ left:
 sections:
   - label: Links
     children:
-      - label: Priser
+      - label: Pricing
         to: /nb
+      - label: Features
+        to: /blog
   - label: Features
     children:
-      - label: Slidev
-        href: https://github.com/slidevjs/slidev
+      - label: Simple
+        to: https://github.com/slidevjs/slidev
       - label: Discord
-        href: https://discord.gg/slidev
+        to: https://discord.gg/slidev
   - label: Legal
     children:
       - label: Terms of Service
-        href: https://github.com/slidevjs/slidev
+        to: https://github.com/slidevjs/slidev
       - label: Privacy Policy
-        href: https://discord.gg/slidev
+        to: https://discord.gg/slidev
 
 right:
   - icon: i-simple-icons-github
