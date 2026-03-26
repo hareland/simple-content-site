@@ -46,11 +46,6 @@ const headline = ref(findPageHeadline(navigation?.value, page.value?.path))
 watch(() => navigation?.value, () => {
   headline.value = findPageHeadline(navigation?.value, page.value?.path) || headline.value
 })
-
-// todo: make the landing OG component customizable.
-defineOgImageComponent('Landing', {
-  headline: headline.value,
-})
 </script>
 
 <template>

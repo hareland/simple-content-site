@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     enabled: true,
   },
   content: {
+    experimental: { sqliteConnector: 'native' },
     build: {
       markdown: {
         highlight: {
@@ -55,6 +56,15 @@ export default defineNuxtConfig({
   //   compatibilityVersion: 5,
   // },
   compatibilityDate: '2025-07-22',
+  vite: {
+    optimizeDeps: {
+      include: [
+      ],
+    },
+    resolve: {
+      dedupe: ['vue', '@vue/runtime-core', '@vue/runtime-dom', '@vue/reactivity', '@vue/shared'],
+    },
+  },
   hooks: {
     'nitro:config'(nitroConfig) {
       const nuxt = useNuxt()

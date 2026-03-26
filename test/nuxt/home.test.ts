@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { mountSuspended, mockNuxtImport } from '@nuxt/test-utils/runtime'
 import App from '../../layer/app/app.vue'
 import { withTrailingSlash } from 'ufo'
+import { useNuxtApp, useRoute } from 'nuxt/app'
 
 vi.stubGlobal('defineOgImageComponent', vi.fn())
 
