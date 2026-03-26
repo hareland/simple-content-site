@@ -51,11 +51,6 @@ watch(() => navigation?.value, () => {
 if (page.value && page.value.seo) {
   useSeoMeta(page.value.seo)
 }
-
-defineOgImage('SaaS', {
-  title: title,
-  headline: headline.value,
-})
 </script>
 
 <template>
