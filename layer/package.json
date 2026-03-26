@@ -45,14 +45,10 @@
     "ufo": "^1.6.3",
     "zod": "^4.3.5",
     "zod-to-json-schema": "^3.25.1",
-    "h3": "^1.15.10",
-    "@vue/runtime-core": "^3.5.27"
+    "h3": "^1.15.10"
   },
   "peerDependencies": {
     "nuxt": "4.x",
-    "@vue/runtime-core": "3.5.27"
-  },
-  "overrides": {
     "@vue/runtime-core": "3.5.27"
   }
 }
