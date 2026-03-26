@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.1.0](https://github.com/hareland/simple-content-site/compare/v3.0.0...v3.1.0) (2026-03-26)
+
+### Bug Fixes
+
+* add nuxt i18n test fixture ([3e9b8b4](https://github.com/hareland/simple-content-site/commit/3e9b8b4e59aab993177c6cf5958b822a71d0be87))
+* add nuxt i18n test fixture ([642a3d1](https://github.com/hareland/simple-content-site/commit/642a3d15b1e2e8a5f357cc891eb6c8c100828120))
+* **ci:** add test step to CI workflow ([eda19c5](https://github.com/hareland/simple-content-site/commit/eda19c5cf06ed723578e0a506d9c400a176cf03e))
+* **composables, pages:** ensure `route.path` has a leading slash in `useSitePage` and add debug log ([a5cd2ef](https://github.com/hareland/simple-content-site/commit/a5cd2ef105361111f673dbe3eaa757e38225b011))
+* **composables:** correct config property reference in `useSiteI18n` ([bdb4de2](https://github.com/hareland/simple-content-site/commit/bdb4de217709169d5197a3731b458adaa045636c))
+* **composables:** ensure `locale` has a leading slash in `useSitePage` ([2c810e4](https://github.com/hareland/simple-content-site/commit/2c810e42c5d9096b8e813a229ca958d1a4a50691))
+* **config:** add cleanup step for `README.md` in release process ([6b7d3c9](https://github.com/hareland/simple-content-site/commit/6b7d3c9711a6563f28bb0dfc9cf7997e3d98b439))
+* **config:** improve i18n strategy handling and locale filtering ([708b2bd](https://github.com/hareland/simple-content-site/commit/708b2bd428c6c6ca7c7d7e15b9d6cc3ce2bcfaf0))
+* **config:** remove unused `nitro.prerender` configuration ([fa8a5a7](https://github.com/hareland/simple-content-site/commit/fa8a5a7e08aaef410262cb54fccdbb236cd38987))
+* missing links in playground ([9150dfc](https://github.com/hareland/simple-content-site/commit/9150dfc359cbac276458373f3281a7deb12b7017))
+* **modules:** remove unused resolver import in content module setup ([1821a6a](https://github.com/hareland/simple-content-site/commit/1821a6abafc406aa4a6ce5ae51c2f89deca47258))
+* **modules:** update css module to improve template handling and CSS array initialization ([0be6543](https://github.com/hareland/simple-content-site/commit/0be6543b7ee8179a300ab8c1011e5416f1cd6995))
+* **pages:** ensure `route.path` has leading slash before fetching page data ([1319e73](https://github.com/hareland/simple-content-site/commit/1319e73b4ea74c5372da5114b33a7cf53529fe63))
+* **ts:** Typing... ([063bc08](https://github.com/hareland/simple-content-site/commit/063bc0889c54fb38d4cd0c2f944e7279b734a791))
+
 ## [3.0.0](https://github.com/hareland/simple-content-site/compare/v2.3.1...v3.0.0) (2026-01-27)
 
 ### Features
