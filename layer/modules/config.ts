@@ -7,6 +7,9 @@ import { getGitBranch, getGitEnv, getLocalGitInfo } from '../utils/git'
 
 interface SimpleContentSiteOptions {
   excludeContent?: string[]
+  experimental?: {
+    prerender?: boolean
+  }
 }
 
 const log = logger.withTag('SimpleContentSite')
@@ -17,6 +20,9 @@ export default defineNuxtModule<SimpleContentSiteOptions>({
   },
   defaults: {
     excludeContent: [],
+    experimental: {
+      prerender: false,
+    },
   },
   async setup(_options, nuxt) {
     const { resolve } = createResolver(import.meta.url)

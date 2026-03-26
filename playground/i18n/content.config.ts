@@ -5,7 +5,8 @@ import { joinURL } from 'ufo'
 const { options } = useNuxt()
 const cwd = joinURL(options.rootDir, 'content')
 
-const locales = options.i18n?.locales || []
+// @ts-expect-error This is not typed somehow...
+const locales = options?.i18n?.locales || []
 
 const collections: Record<string, DefinedCollection> = {}
 

@@ -2,7 +2,7 @@
   "name": "simple-content-site-i18n-playground",
   "scripts": {
     "dev": "nuxt dev",
-    "build": "nuxt build"
+    "build": "NODE_OPTIONS=--max-old-space-size=8192 nuxt build"
   },
   "dependencies": {
     "nuxt": "^4.4.2",

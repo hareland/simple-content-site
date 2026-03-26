@@ -18,6 +18,9 @@ export default defineNuxtConfig({
   },
   scs: {
     excludeContent: ['*/blog/**'],
+    experimental: {
+      // prerender: true, // probably wont work...
+    },
   },
   studio: {
     // route: '/admin',

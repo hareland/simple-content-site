@@ -1,4 +1,4 @@
-import { extendViteConfig, createResolver, useNuxt } from '@nuxt/kit'
+import { extendViteConfig, createResolver } from '@nuxt/kit'
 
 const { resolve } = createResolver(import.meta.url)
 
@@ -58,30 +58,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-22',
   vite: {
     optimizeDeps: {
-      include: [
-      ],
+      include: [],
     },
     resolve: {
       dedupe: ['vue', '@vue/runtime-core', '@vue/runtime-dom', '@vue/reactivity', '@vue/shared'],
-    },
-  },
-  hooks: {
-    'nitro:config'(nitroConfig) {
-      const nuxt = useNuxt()
-
-      const i18nOptions = nuxt.options.i18n
-
-      const routes: string[] = []
-      if (!i18nOptions) {
-        routes.push('/')
-      }
-      else {
-        routes.push(...(i18nOptions.locales?.map(locale => typeof locale === 'string' ? `/${locale}` : `/${locale.code}`) || []))
-      }
-
-      nitroConfig.prerender = nitroConfig.prerender || {}
-      nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
-      nitroConfig.prerender.routes.push(...(routes || []))
     },
   },
   icon: {
