@@ -48,6 +48,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  build: {
+    transpile: ['simple-content-site'],
+  },
   // future: {
   //   compatibilityVersion: 5,
   // },
