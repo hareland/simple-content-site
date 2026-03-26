@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
 import type { VariantType } from 'motion-v'
 
 const props = defineProps<{
