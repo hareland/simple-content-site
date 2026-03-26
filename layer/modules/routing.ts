@@ -1,6 +1,7 @@
-import { defineNuxtModule, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, createResolver, useNuxt } from '@nuxt/kit'
 
 const { resolve } = createResolver(import.meta.url)
+
 export default defineNuxtModule({
   meta: {
     // todo: rename this module to fit it's purpose
@@ -23,5 +24,28 @@ export default defineNuxtModule({
       loadComposableIfNotFound('useSiteFooter')
       loadComposableIfNotFound('useSitePage')
     })
+  },
+  hooks: {
+    'nitro:config'(nitroConfig) {
+      const nuxt = useNuxt()
+
+      if (nuxt.options.runtimeConfig?.scs?.experimental?.prerender !== true) {
+        return
+      }
+
+      const i18nOptions = nuxt.options.i18n
+
+      const routes: string[] = []
+      if (!i18nOptions) {
+        routes.push('/')
+      }
+      else {
+        routes.push(...(i18nOptions.locales?.map(locale => typeof locale === 'string' ? `/${locale}` : `/${locale.code}`) || []))
+      }
+
+      nitroConfig.prerender = nitroConfig.prerender || {}
+      nitroConfig.prerender.routes = nitroConfig.prerender.routes || []
+      nitroConfig.prerender.routes.push(...(routes || []))
+    },
   },
 })
