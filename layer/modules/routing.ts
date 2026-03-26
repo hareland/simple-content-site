@@ -29,6 +29,7 @@ export default defineNuxtModule({
     'nitro:config'(nitroConfig) {
       const nuxt = useNuxt()
 
+      // @ts-expect-error this cannot be typed from sibling module...
       if (nuxt.options.runtimeConfig?.scs?.experimental?.prerender !== true) {
         return
       }
