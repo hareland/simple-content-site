@@ -12,11 +12,14 @@ definePageMeta({
 const route = useRoute()
 const { findByPath, getKeyForPath } = useSitePage()
 
-const { data: page } = await useAsyncData(() => getKeyForPath(route.path), async () => {
+const dataKey = computed(() => getKeyForPath(route.path))
+
+const { data: page } = await useAsyncData(dataKey, async () => {
   console.log('fetching page', route.path)
   return await findByPath(withLeadingSlash(route.path) || '/')
 }, {
   immediate: true,
+  watch: [dataKey],
 })
 
 if (!page.value) {
@@ -49,7 +52,7 @@ watch(() => navigation?.value, () => {
 </script>
 
 <template>
-  <UPage v-if="page">
+  <UPage>
     <ContentRenderer
       v-if="page"
       :value="page"
