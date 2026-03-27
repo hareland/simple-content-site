@@ -16,8 +16,9 @@ const VUE_PACKAGES = [
 ] as const
 
 describe('layer/package.json', () => {
-  it('vue is listed in layer dependencies', () => {
-    expect(layerPackageJson.dependencies?.vue).toBeDefined()
+  it('vue is not a direct dependency of the layer (provided by Nuxt via peerDependency)', () => {
+    expect(layerPackageJson.dependencies?.vue).toBeUndefined()
+    expect(layerPackageJson.devDependencies?.vue).toBeUndefined()
   })
 })
 
