@@ -1,5 +1,4 @@
 import type { Collections, PagesCollectionItem } from '@nuxt/content'
-import { kebabCase } from 'scule'
 import { joinURL, withLeadingSlash } from 'ufo'
 
 export const useSitePage = () => {
@@ -13,9 +12,7 @@ export const useSitePage = () => {
   })
 
   const getKeyForPath = (path: string) => {
-    const prefix = toValue(collectionName.value).replaceAll('_', '-')
-    const suffix = kebabCase(withLeadingSlash(path).replaceAll('/', '--'))
-    return `${prefix}:${suffix}`
+    return `page:${withLeadingSlash(path)}`
   }
 
   const findByPath = async (path: string) => {

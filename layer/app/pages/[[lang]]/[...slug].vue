@@ -15,11 +15,7 @@ const { findByPath, getKeyForPath } = useSitePage()
 const dataKey = computed(() => getKeyForPath(route.path))
 
 const { data: page } = await useAsyncData(dataKey, async () => {
-  console.log('fetching page', route.path)
   return await findByPath(withLeadingSlash(route.path) || '/')
-}, {
-  immediate: true,
-  watch: [dataKey],
 })
 
 if (!page.value) {
@@ -52,9 +48,8 @@ watch(() => navigation?.value, () => {
 </script>
 
 <template>
-  <UPage>
+  <UPage v-if="page">
     <ContentRenderer
-      v-if="page"
       :value="page"
       unwrap="p"
     />
