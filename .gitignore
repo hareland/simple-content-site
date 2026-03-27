@@ -9,6 +9,9 @@ dist
 # Node dependencies
 node_modules
 
+# npm lock files are illegal in this pnpm workspace
+package-lock.json
+
 # Logs
 logs
 *.log

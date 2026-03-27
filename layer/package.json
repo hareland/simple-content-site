@@ -53,7 +53,7 @@
     "zod-to-json-schema": "^3.25.1"
   },
   "peerDependencies": {
-    "@vue/runtime-core": "3.5.27",
+    "@vue/runtime-core": "^3.5.0",
     "nuxt": "4.x"
   }
 }
