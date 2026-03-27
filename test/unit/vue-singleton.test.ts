@@ -50,6 +50,19 @@ describe('layer/package.json (vue declared as a dependency)', () => {
     expect(version, 'expected vue dependency to be a non-empty semver range').toMatch(/^\^?\d+\.\d+\.\d+$/)
   })
 
+  it('vue version floor is >= 3.5.31 so pnpm cannot resolve to the stale 3.5.27 copy', () => {
+    // @nuxt/test-utils@4.0.0 declares "vue": "^3.5.27" as a direct dep.
+    // If the layer only required "^3.5.0", pnpm would happily keep a consumer's
+    // stale lockfile resolution at 3.5.27 (which satisfies both ranges).
+    // "^3.5.31" cannot be satisfied by 3.5.27, so pnpm is forced to upgrade
+    // the consumer's vue to 3.5.31+ — resolving to one copy.
+    const version = (layerPackageJson.dependencies?.vue ?? '').replace(/^\^/, '')
+    const [major, minor, patch] = version.split('.').map(Number)
+    expect(major, 'vue major must be 3').toBe(3)
+    expect(minor, 'vue minor must be at least 5').toBeGreaterThanOrEqual(5)
+    expect(patch, 'vue patch must be at least 31 to exclude the stale 3.5.27 copy').toBeGreaterThanOrEqual(31)
+  })
+
   it('vue is not in peerDependencies (no longer needed there)', () => {
     expect(
       layerPackageJson.peerDependencies?.['@vue/runtime-core'],
