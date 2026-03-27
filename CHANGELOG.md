@@ -1,5 +1,19 @@
 # Changelog
 
+## [3.1.4](https://github.com/hareland/simple-content-site/compare/v3.1.3...v3.1.4) (2026-03-27)
+
+### Bug Fixes
+
+* add pnpm overrides to resolve duplicate Vue instances causing HTTP 500 ([21226ef](https://github.com/hareland/simple-content-site/commit/21226efef507c4ecc10b57cbbda3a8494760e60a))
+* add vite.ssr.noExternal for Vue packages to prevent SSR duplicate-instance 500 ([f7eb753](https://github.com/hareland/simple-content-site/commit/f7eb7535912255a25c4f82b8a43d86a7798eeea0))
+* bump vue dep floor to ^3.5.31 so @nuxt/test-utils cannot resolve to stale 3.5.27 ([bba2629](https://github.com/hareland/simple-content-site/commit/bba2629da2d5914284f3d0fdc07ee8311250d50a))
+* declare vue as dependency in layer/package.json, remove complex Vite/pnpm workarounds ([247744a](https://github.com/hareland/simple-content-site/commit/247744a55904adc3ffee00b07a2dd3c9880e4dcf))
+* remove vue from layer deps; enforce version floor via pnpm.overrides ([0904dd1](https://github.com/hareland/simple-content-site/commit/0904dd15e628bd4633eab17bb933224e6bcae4df))
+
+### Reverts
+
+* undo vue dep removal and pnpm.overrides - caused lockfile config mismatch in CI ([bf1a248](https://github.com/hareland/simple-content-site/commit/bf1a2482f4f9f41ee94d920be558aabdf40fe52e))
+
 ## [3.1.3](https://github.com/hareland/simple-content-site/compare/v3.1.2...v3.1.3) (2026-03-26)
 
 ## [3.1.2](https://github.com/hareland/simple-content-site/compare/v3.1.1...v3.1.2) (2026-03-26)
