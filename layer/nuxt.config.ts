@@ -60,9 +60,6 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: [],
     },
-    resolve: {
-      dedupe: ['vue', '@vue/runtime-core', '@vue/runtime-dom', '@vue/reactivity', '@vue/shared'],
-    },
   },
   icon: {
     provider: 'iconify',

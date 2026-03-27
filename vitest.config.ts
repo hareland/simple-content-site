@@ -5,13 +5,13 @@ import { fileURLToPath } from 'node:url'
 export default defineConfig({
   test: {
     projects: [
-      // {
-      //   test: {
-      //     name: 'unit',
-      //     include: ['test/unit/*.{test,spec}.ts'],
-      //     environment: 'node',
-      //   },
-      // },
+      {
+        test: {
+          name: 'unit',
+          include: ['test/unit/*.{test,spec}.ts'],
+          environment: 'node',
+        },
+      },
       // {
       //   test: {
       //     name: 'e2e',
