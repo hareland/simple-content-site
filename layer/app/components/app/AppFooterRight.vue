@@ -32,5 +32,10 @@ const footerLinks = computed(() => props.links || [
       v-bind="{ color: 'neutral', variant: 'ghost', ...link }"
     />
   </template>
-  <UColorModeButton />
+  <ClientOnly>
+    <UColorModeButton />
+    <template #fallback>
+      <div class="h-8 w-8 animate-pulse bg-neutral-200 dark:bg-neutral-800 rounded-md" />
+    </template>
+  </ClientOnly>
 </template>
