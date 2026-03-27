@@ -100,4 +100,16 @@ describe('routing', () => {
       }
     })
   })
+
+  it('renders locale-specific content for each locale without cross-contamination', async () => {
+    // Regression test for the SSR flash: each locale path must render its own
+    // content and must not show content belonging to another locale.
+    const enComponent = await mountSuspended(App, { route: '/' })
+    expect(enComponent.html()).toContain('Documentation')
+
+    const nbComponent = await mountSuspended(App, { route: '/nb' })
+    expect(nbComponent.html()).toContain('Dokumentasjonen')
+    // Norwegian page must not render the English-only body text
+    expect(nbComponent.html()).not.toContain('>Documentation<')
+  })
 })
